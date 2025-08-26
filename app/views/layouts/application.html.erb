@@ -11,6 +11,43 @@
   </head>
 
   <body>
+    <header>
+      <ul>
+        <li>Bunna</li>
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to "about", about_path %>
+          </li>
+          <li>top(投稿一覧)</li>
+          <li>search(キーワード検索)</li>
+          <li>mypage</li>
+          <li>create new post</li>
+          <li>
+            <%= link_to "log out", destroy_user_session_path, method: :delete %>
+          </li>
+
+        <% else %>
+
+          <li>
+            <%= link_to "about", about_path %>
+          </li>
+          <li>top(投稿一覧)</li>
+          <li>search(キーワード検索)</li>
+          <li>
+            <%= link_to "sign up", new_user_registration_path %>
+          </li>
+          <li>
+            <%= link_to "log in", new_user_session_path  %>
+          </li>
+        <% end %>
+    </header>
+
+    <main>
     <%= yield %>
+    </main>
+
+    <footer>
+    </footer>
+
   </body>
 </html>
