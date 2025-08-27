@@ -1,0 +1,27 @@
+<h1>New Posts</h1>
+
+<%= form_with model: @post do |f| %>
+  <p> 画像 </p>
+  <%= f.file_field :image, accept: "image/*" %>
+
+  <p> タイトル </p>
+  <%= f.text_field :title %>
+
+  <p> 本文 </p>
+  <%= f.text_area :body %>
+
+  <p> ジャンル </p>
+  <%#= f.select :genre %>
+
+  <p> 種類 </p>
+  <%#= f.select :kind %>
+
+  <p> 産地国 </p>
+  <%#= f.select :origin_country %>
+
+  <p> 場所 </p>
+  <%#= f.select :place %>
+
+  <%= f.submit '投稿' %>
+
+<% end %>

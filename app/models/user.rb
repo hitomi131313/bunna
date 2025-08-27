@@ -10,4 +10,6 @@ class User < ApplicationRecord
   validates :last_name,       presence: true
   validates :first_name_kana, presence: true
   
+  has_many :posts, dependent: :destroy
+  
 end

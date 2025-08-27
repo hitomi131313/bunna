@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_08_26_124505) do
+ActiveRecord::Schema.define(version: 2025_08_27_131407) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -38,6 +38,21 @@ ActiveRecord::Schema.define(version: 2025_08_26_124505) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title", default: "", null: false
+    t.text "body", default: "", null: false
+    t.integer "genre", default: 0, null: false
+    t.integer "kind", default: 0, null: false
+    t.integer "origin_country", default: 0, null: false
+    t.integer "place", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["genre"], name: "index_posts_on_genre"
+    t.index ["kind"], name: "index_posts_on_kind"
+    t.index ["origin_country"], name: "index_posts_on_origin_country"
+    t.index ["place"], name: "index_posts_on_place"
   end
 
   create_table "users", force: :cascade do |t|
