@@ -1,2 +1,14 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<% @post.each do |post| %>
+  <div>
+    <%= link_to post_path(post.id) do %>
+      <%= image_tag post.get_image %>
+    <% end %>
+    <p> ユーザーネーム : <%= post.user.name %>  </p>
+    <p> タイトル : <%= post.title %> </p>
+    <p> 本文 : <%= post.body %>  </p>
+    <%#= post.genre %>
+    <%#= post.kind %>
+    <%#= post.origin_country %>
+    <%#= post.place %>
+  </div>
+<% end %>
