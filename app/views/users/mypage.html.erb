@@ -1,2 +1,23 @@
-<h1>Users#mypage</h1>
-<p>Find me in app/views/users/mypage.html.erb</p>
+<div>
+  <h3><%= @user.name %></h3>
+  <%= link_to "プロフィール編集", edit_user_path(@user.id) %>
+</div>
+
+<% @my_post.each do |my_post| %>
+ <div>
+    <%= link_to post_path(my_post.id) do %>
+      <%= image_tag my_post.get_image %>
+    <% end %>
+    <p> 投稿ユーザー画像 : <%= image_tag my_post.user.get_profile_image(100,100) %> </p>
+    <p> ユーザーネーム :  <%= link_to user_path(@user.id) do %>
+                           <%= my_post.user.name %>
+                         <% end %> 
+                         </p>
+    <p> タイトル : <%= my_post.title %> </p>
+    <p> 本文 : <%= my_post.body %>  </p>
+    <%#= my_post.genre %>
+    <%#= my_post.kind %>
+    <%#= my_post.origin_country %>
+    <%#= my_post.place %>
+  </div>
+<% end %>

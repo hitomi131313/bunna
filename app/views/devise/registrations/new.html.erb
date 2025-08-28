@@ -5,27 +5,27 @@
 
 
   <div class="field">
-    <%= f.label :名前 %><br />
+    <%= f.label :ユーザーネーム %><br />
     <%= f.text_field :name, autofocus: true, autocomplete: "username" %>
   </div>
 
   <div class="field">
-    <%= f.label :姓 %><br />
+    <%= f.label :姓（漢字） %><br />
     <%= f.text_field :last_name, autofocus: true, autocomplete: "family-name" %>
   </div>
 
   <div class="field">
-    <%= f.label :名 %><br />
+    <%= f.label :名（漢字） %><br />
     <%= f.text_field :first_name, autofocus: true, autocomplete: "given-name" %>
   </div>
 
   <div class="field">
-    <%= f.label :姓カナ %><br />
+    <%= f.label :セイ（カタカナ） %><br />
     <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :名カナ %><br />
+    <%= f.label :メイ（カタカナ） %><br />
     <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "off" %>
   </div>
 

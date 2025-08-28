@@ -1,2 +1,20 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+  <h2>プロフィール編集</h2>
+    <%= form_with model:@user do |f| %>
+      <p> プロフィール画像 </p>
+      <%= f.file_field :profile_image, accept: "image/*" %>
+      <p> ユーザーネーム </p>
+      <%= f.text_field :name, autofoucus: true %>
+      <p> 姓（漢字）</p>
+      <%= f.text_field :last_name, autofoucus: true %>
+      <p> 名（漢字） </p>
+      <%= f.text_field :first_name, autofoucus: true %>
+      <p> セイ（カタカナ） </p>
+      <%= f.text_field :last_name_kana, autofoucus: true %>
+      <p> メイ（カタカナ） </p>
+      <%= f.text_field :first_name_kana, autofoucus: true %>
+      <p> メールアドレス </p>
+      <%#= f.text_field :email, autofoucus: true %>
+      <p> パスワード </p>
+      <%#= f.text_field :passward, autofoucus: true %>
+      <p><%= f.submit "変更を保存" %></p>
+    <% end %>

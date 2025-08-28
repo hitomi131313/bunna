@@ -1,2 +1,22 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div>
+  <h3><%= @user.name %></h3>
+</div>
+
+<% @posts.each do |posts| %>
+ <div>
+    <%= link_to post_path(posts.id) do %>
+      <%= image_tag posts.get_image %>
+    <% end %>
+    <p> 投稿ユーザー画像 : <%= image_tag posts.user.get_profile_image(100,100) %> </p>
+    <p> ユーザーネーム :  <%= link_to user_path(@user.id) do %>
+                          <%= posts.user.name %>
+                         <% end %> 
+                         </p>
+    <p> タイトル : <%= posts.title %> </p>
+    <p> 本文 : <%= posts.body %>  </p>
+    <%#= posts.genre %>
+    <%#= posts.kind %>
+    <%#= posts.origin_country %>
+    <%#= posts.place %>
+  </div>
+<% end %>
