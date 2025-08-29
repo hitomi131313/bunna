@@ -1,3 +1,5 @@
+<h2>投稿編集</h2>
+
 <% if @post.errors.any? %>
   <%= @post.errors.count %>件のエラーが発生しました
   <ul>
@@ -7,7 +9,6 @@
   </ul>
 <% end %>
 
-<h2>投稿編集</h2>
     <%= form_with model:@post do |f| %>
       <p> 画像 </p>
       <%= f.file_field :image, accept: "image/*" %>

@@ -1,3 +1,5 @@
+<h2>プロフィール編集</h2>
+
 <% if @user.errors.any? %>
   <%= @user.errors.count %>件のエラーが発生しました
   <ul>
@@ -7,7 +9,6 @@
   </ul>
 <% end %>
 
-<h2>プロフィール編集</h2>
     <%= form_with model:@user do |f| %>
       <p> プロフィール画像 </p>
       <%= f.file_field :profile_image, accept: "image/*" %>
@@ -22,7 +23,7 @@
       <p> メイ（カタカナ） </p>
       <%= f.text_field :first_name_kana, autofoucus: true %>
       <p> メールアドレス </p>
-      <%#= f.text_field :email, autofoucus: true %>
+      <%= f.text_field :email, autofoucus: true %>
       <p> パスワード </p>
       <%#= f.text_field :passward, autofoucus: true %>
       <p><%= f.submit "変更を保存" %></p>

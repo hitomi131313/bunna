@@ -14,8 +14,10 @@ before_action :is_matching_login_user, only: [:edit, :update]
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
+      flash[:notice] = "編集に成功しました"
       redirect_to mypage_path(@user)
     else
+      flash.now[:notice] = "編集に失敗しました"
       render :edit
     end
   end
