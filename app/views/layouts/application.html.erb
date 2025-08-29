@@ -12,47 +12,60 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header>
-      <ul>
-        <li>Bunna</li>
-        <% if user_signed_in? %>
-          <li>
-            <%= link_to "about", about_path %>
-          </li>
-          <li>
-            <%= link_to "投稿一覧", posts_path %>
-          </li>
-          <li>search(キーワード検索)</li>
-          <li>
-            <%= link_to "マイページ", mypage_path %>
-          </li>
-          <li>
-            <%= link_to "新規投稿", new_post_path %>
-          </li>
-          <li>
-            <%= link_to "log out", destroy_user_session_path, method: :delete %>
-          </li>
 
-        <% else %>
+  <body class="d-flex flex-column vh-100">
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand p-3" href="/">Bunna</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" 
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "about", about_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "投稿一覧", posts_path %>
+            </li>
+            <li class="nav-item">search(キーワード検索)</li>
+            <li class="nav-item">
+              <%= link_to "マイページ", mypage_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "新規投稿", new_post_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "log out", destroy_user_session_path, method: :delete %>
+            </li>
 
-          <li>
-            <%= link_to "about", about_path %>
-          </li>
-          <li>
-            <%= link_to "投稿一覧", posts_path %>
-          </li>
-          <li>search(キーワード検索)</li>
-          <li>
-            <%= link_to "sign up", new_user_registration_path %>
-          </li>
-          <li>
-            <%= link_to "log in", new_user_session_path  %>
-          </li>
-        <% end %>
+            <% else %>
+
+            <li class="nav-item">
+              <%= link_to "about", about_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "投稿一覧", posts_path %>
+            </li>
+            <li class="nav-item">search(キーワード検索)</li>
+            <li class="nav-item">
+              <%= link_to "sign up", new_user_registration_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "log in", new_user_session_path  %>
+            </li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
 
-    <main>
+    <main class="mb-auto">
       <% flash.each do |message_type, message| %>
         <div class "flash-message <%= message_type %>"><%= message %></div>
       <% end %>
