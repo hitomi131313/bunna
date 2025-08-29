@@ -18,3 +18,5 @@
       <%#= f.text_field :passward, autofoucus: true %>
       <p><%= f.submit "変更を保存" %></p>
     <% end %>
+
+    <%= link_to "ユーザーを削除", user_path(@user.id), method: :delete, "data-confirm" => "本当に削除しますか？"  %>

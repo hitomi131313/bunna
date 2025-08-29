@@ -3,7 +3,10 @@
     <%= link_to post_path(post.id) do %>
       <%= image_tag post.get_image %>
     <% end %>
-    <p> ユーザーネーム : <%= post.user.name %>  </p>
+    <p> ユーザーネーム :  <%= link_to user_path(post.user_id) do %>
+                          <%= post.user.name %>
+                         <% end %> 
+                         </p>
     <p> タイトル : <%= post.title %> </p>
     <p> 本文 : <%= post.body %>  </p>
     <%#= post.genre %>

@@ -27,6 +27,9 @@ class PostsController < ApplicationController
   def destroy
   end
 
+  #def timeline
+  #end
+
 
 private
   def post_params

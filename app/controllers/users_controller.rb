@@ -23,6 +23,12 @@ before_action :is_matching_login_user, only: [:edit, :update]
     #@following_posts = Post.where(user_id: @user.following_ids).all
   end
 
+  def destroy
+    user = User.find(params[:id])
+    user.destroy
+    redirect_to new_user_registration_path
+  end
+
 
 private
   def user_params
