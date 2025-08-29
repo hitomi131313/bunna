@@ -3,7 +3,7 @@
   <%= link_to "プロフィール編集", edit_user_path(@user.id) %>
 </div>
 
-
+<div class="card-list-container py-5">
 <% @my_post.each do |my_post| %>
   <div class="card w-50 mx-auto mt-4 shadow-lg">
   <%= link_to post_path(my_post.id) do %>
