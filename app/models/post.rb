@@ -2,6 +2,14 @@ class Post < ApplicationRecord
   has_one_attached :image
 
   belongs_to :user
+
+  validates :image,           presence: true
+  validates :title,           presence: true
+  validates :body,            presence: true
+  #validates :genre,          presence: true
+  #validates :kind,           presence: true
+  #validates :origin_country, presence: true
+  #validates :place,          presence: true
   
   def get_image
     unless image.attached?

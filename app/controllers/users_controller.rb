@@ -13,8 +13,11 @@ before_action :is_matching_login_user, only: [:edit, :update]
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to mypage_path(@user)
+    if @user.update(user_params)
+      redirect_to mypage_path(@user)
+    else
+      render :edit
+    end
   end
 
   def mypage

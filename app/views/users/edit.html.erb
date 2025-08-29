@@ -1,4 +1,13 @@
-  <h2>プロフィール編集</h2>
+<% if @user.errors.any? %>
+  <%= @user.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<h2>プロフィール編集</h2>
     <%= form_with model:@user do |f| %>
       <p> プロフィール画像 </p>
       <%= f.file_field :profile_image, accept: "image/*" %>

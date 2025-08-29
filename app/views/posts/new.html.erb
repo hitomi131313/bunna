@@ -1,5 +1,14 @@
-<h1>New Posts</h1>
+<% if @post.errors.any? %>
+  <%= @post.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @post.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
+
+<h1>New Posts</h1>
 <%= form_with model: @post do |f| %>
   <p> 画像 </p>
   <%= f.file_field :image, accept: "image/*" %>
