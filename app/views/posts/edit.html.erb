@@ -1,2 +1,20 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<h2>投稿編集</h2>
+    <%= form_with model:@post do |f| %>
+      <p> 画像 </p>
+      <%= f.file_field :image, accept: "image/*" %>
+      <p> タイトル </p>
+      <%= f.text_field :title, autofoucus: true %>
+      <p> 本文 </p>
+      <%= f.text_field :body, autofoucus: true %>
+      <p> ジャンル </p>
+      <%#= f.text_field :genre, autofoucus: true %>
+      <p> 種類 </p>
+      <%#= f.text_field :kind, autofoucus: true %>
+      <p> 産地国 </p>
+      <%#= f.text_field :origin_country, autofoucus: true %>
+      <p> 場所 </p>
+      <%#= f.text_field :place, autofoucus: true %>
+      <p><%= f.submit "変更を保存" %></p>
+    <% end %>
+
+  <%= link_to "投稿を削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
