@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
 
   devise_for :users
+  
   get 'about' => 'homes#about', as:'about'
   root to: 'posts#index'
-  resources :posts
+
+  resources :posts do
+    resource :favorite, only: [:create, :destroy]
+  end
+
   get 'mypage' => 'users#mypage', as:'mypage'
   resources :users, only: [:edit, :show, :update, :destroy]
 
