@@ -41,9 +41,12 @@ private
   end
 
   def is_matching_login_user
-    user = User.find(params[:id])
-    unless user.id == current_user.id
-      redirect_to posts_path
+    user = User.find_by(id: params[:id])
+    if !user_signed_in?
+      redirect_to new_user_session_path
+    elsif user.present? && user.id != current_user.id
+        redirect_to posts_path
+    else
     end
   end
 
