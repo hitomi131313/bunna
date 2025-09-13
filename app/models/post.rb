@@ -26,10 +26,79 @@ class Post < ApplicationRecord
   end
 
   enum genre: {
-    blank: 0,
+    blank:  0,
     coffee: 1,
-    cup: 2,
-    goods: 3
+    cup:    2,
+    goods:  3
   }
+
+  enum  kind:{
+    unknown:         0,
+    espresso:        1,
+    doppio:          2,
+    ristretto:       3,
+    lungo:           4,
+    americano:       5,
+    latte:           6,
+    cappuccino:      7,
+    macchiato:       8,
+    mocha:           9,
+    flat_white:      10,
+    cortado:         11,
+    con_panna:       12,
+    affogato:        13,
+    irish_coffee:    14,
+    vienna_coffee:   15,
+    turkish_coffee:  16,
+    greek_coffee:    17,
+    french_press:    18,
+    pour_over:       19,
+    siphon:          20,
+    cold_brew:       21,
+    nitro_cold_brew: 22
+  }
+
+  enum origin_country:{
+    unknown:            0,
+    brazil:             1,
+    colombia:           2,
+    ethiopia:           3,
+    kenya:              4,
+    guatemala:          5,
+    costa_rica:         6,
+    honduras:           7,
+    el_salvador:        8,
+    nicaragua:          9,
+    panama:             10,
+    peru:               11,
+    mexico:             12,
+    ecuador:            13,
+    bolivia:            14,
+    venezuela:          15,
+    jamaica:            16,
+    dominican_republic: 17,
+    cuba:               18,
+    puerto_rico:        19,
+    indonesia:          20,
+    vietnam:            21,
+    thailand:           22,
+    laos:               23,
+    india:              24,
+    yemen:              25,
+    tanzania:           26,
+    rwanda:             27,
+    burundi:            28,
+    uganda:             29,
+    cameroon:           30,
+    congo:              31,
+    papua_new_guinea:   32
+  }, _suffix: true
+
+  enum place:{
+    blank:0,
+    cafe: 1,
+    house:2,
+    other:3
+  }, _suffix: true
 
 end

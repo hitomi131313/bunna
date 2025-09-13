@@ -23,13 +23,13 @@
   <%= f.select :genre, Post.genres.keys.map { |k| [t("enums.post.genre.#{k}"), k] } %>
 
   <p> 種類 </p>
-  <%#= f.select :kind %>
+  <%= f.select :kind, Post.kinds.keys.map { |k| [t("enums.post.kind.#{k}"), k] } %>
 
   <p> 産地国 </p>
-  <%#= f.select :origin_country %>
+  <%= f.select :origin_country, Post.origin_countries.keys.map { |k| [t("enums.post.origin_country.#{k}"), k] } %>
 
   <p> 場所 </p>
-  <%#= f.select :place %>
+  <%= f.select :place, Post.places.keys.map { |k| [t("enums.post.place.#{k}"), k] } %>
 
   <%= f.submit '投稿' %>
 
