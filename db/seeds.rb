@@ -16,7 +16,7 @@ ichigo = User.find_or_create_by!(email: "ichigo@example.com") do |user|
   user.last_name_kana  = "test1"
   user.first_name_kana = "test1"
   user.password = "password"
-  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename:"sample-user1.jpg")
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpeg"), filename:"sample-user1.jpeg")
 end
 
 nico = User.find_or_create_by!(email: "nico@example.com") do |user|
@@ -26,7 +26,7 @@ nico = User.find_or_create_by!(email: "nico@example.com") do |user|
   user.last_name_kana  = "test2"
   user.first_name_kana = "test2"
   user.password = "password"
-  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"), filename:"sample-user2.jpg")
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpeg"), filename:"sample-user2.jpeg")
 end
 
 mitsuba = User.find_or_create_by!(email: "mitsuba@example.com") do |user|
@@ -36,26 +36,26 @@ mitsuba = User.find_or_create_by!(email: "mitsuba@example.com") do |user|
   user.last_name_kana  = "test3"
   user.first_name_kana = "test3"
   user.password = "password"
-  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.jpg"), filename:"sample-user3.jpg")
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.jpeg"), filename:"sample-user3.jpeg")
 end
 
 
 
 #投稿
 Post.find_or_create_by!(title: "Ca-fe") do |post|
-  post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1.jpg"), filename:"sample-post1.jpg")
+  post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1.jpeg"), filename:"sample-post1.jpeg")
   post.body  = "気になっていたカフェラテを飲んできました。"
   post.user  = ichigo
 end
 
 Post.find_or_create_by!(title: "luxualy cup") do |post|
-  post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post2.jpg"), filename:"sample-post2.jpg")
+  post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post2.jpeg"), filename:"sample-post2.jpeg")
   post.body  = "友人はカプチーノ、私はモカを飲みました！美味しかった～"
   post.user  = nico
 end
 
 Post.find_or_create_by!(title: "喫茶三葉") do |post|
-  post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post3.jpg"), filename:"sample-post3.jpg")
+  post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post3.jpeg"), filename:"sample-post3.jpeg")
   post.body  = "名前が同じでふらっと寄ってみたらとても落ち着く空間で、マスターが素敵な方だった"
   post.user  = mitsuba
 end
