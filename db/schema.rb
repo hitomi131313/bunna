@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2025_09_07_003913) do
 
   create_table "posts", force: :cascade do |t|
     t.string "title", default: "", null: false
-    t.text "body", default: "", null: false
+    t.text "body"
     t.integer "genre", default: 0, null: false
     t.integer "kind", default: 0, null: false
     t.integer "origin_country", default: 0, null: false
