@@ -1,0 +1,8 @@
+ja:
+  enums:
+    post:
+      genre:
+        blank : 未選択
+        coffee: コーヒー
+        cup   : コップ
+        goods : コーヒーグッズ

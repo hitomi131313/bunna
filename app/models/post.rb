@@ -25,4 +25,11 @@ class Post < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
+  enum genre: {
+    blank: 0,
+    coffee: 1,
+    cup: 2,
+    goods: 3
+  }
+
 end

@@ -20,7 +20,7 @@
   <%= f.text_area :body %>
 
   <p> ジャンル </p>
-  <%#= f.select :genre %>
+  <%= f.select :genre, Post.genres.keys.map { |k| [t("enums.post.genre.#{k}"), k] } %>
 
   <p> 種類 </p>
   <%#= f.select :kind %>
