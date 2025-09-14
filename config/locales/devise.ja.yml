@@ -1,0 +1,18 @@
+ja:
+  devise:
+    registrations:
+      destroyed: "アカウントを削除しました。またのご利用をお待ちしております。"
+      signed_up: "アカウント登録が完了しました"
+      updated: "アカウント情報を変更しました"
+    sessions:
+      signed_in: "ログインしました"
+      signed_out: "ログアウトしました"
+  errors:
+    messages:
+      already_confirmed: "はすでに登録済みです。ログインしてください。"
+      not_saved:
+        one: "エラーが発生したため%{resource}は保存されませんでした"
+        other: "%{count}件のエラーが発生したため%{resource}は保存されませんでした"
+      taken: "は既に使用されています"
+      blank: "が入力されていません"
+      confirmation: "が内容とあっていません"

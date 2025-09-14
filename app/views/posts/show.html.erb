@@ -13,11 +13,11 @@
                                                   <% end %>
                                                   </p>
            <p> タイトル : <%= @post.title %> </p>
-           <p> 本文 : <%= @post.body %>  </p>
+           <p> 本文 : <%= @post.body %> </p>
            <%#= @post.genre %>
-           <%#= @post.kind %>
-           <%#= @post.origin_country %>
-           <%#= @post.place %>
+           <p> 種類 : <%= @post.kind_i18n %> </p>
+           <p> 産地国 : <%= @post.origin_country_i18n %> </p>
+           <p> 場所 : <%= @post.place_i18n %> </p>
            <span><i class="fa-solid fa-calendar-days"></i> <%= @post.created_at.strftime('%Y/%m/%d') %> ｜ </span>
 
            <% if @post.favorited_by?(current_user) %>
