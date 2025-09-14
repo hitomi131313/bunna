@@ -1,4 +1,9 @@
 
+<p>
+  <%= link_to "新しい順", posts_path(latest: "true") %>
+  <%= link_to "古い順", posts_path(old: "true") %>
+</p>
+
 <% @post.each do |post| %>
 <div class="card w-50 mx-auto mt-4 shadow-lg">
   <%= link_to post_path(post.id) do %>

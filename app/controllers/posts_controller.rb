@@ -20,7 +20,13 @@ class PostsController < ApplicationController
   end
 
   def index
-    @post = Post.all
+    if params[:latest]
+      @post = Post.latest
+    elsif params[:old]
+      @post = Post.old
+    else
+      @post = Post.all
+    end
   end
 
   def show
