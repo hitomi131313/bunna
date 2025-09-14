@@ -27,6 +27,11 @@ class PostsController < ApplicationController
     else
       @post = Post.all
     end
+    if params[:selected_genre].present? && params[:selected_genre].length >= 2
+      @post = @post.where(genre: params[:selected_genre])
+    end  
+    @genre = params[:genre]
+
   end
 
   def show
