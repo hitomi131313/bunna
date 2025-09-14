@@ -20,16 +20,16 @@
   <%= f.text_area :body %>
 
   <p> ジャンル </p>
-  <%= f.select :genre, Post.genres.keys.map { |k| [t("enums.post.genre.#{k}"), k] } %>
+  <%= f.select :genre, Post.genres.keys.map { |k| [t("enums.post.genre.#{k}"), k] }, include_blank: "選択してください" %>
 
   <p> 種類 </p>
-  <%= f.select :kind, Post.kinds.keys.map { |k| [t("enums.post.kind.#{k}"), k] } %>
+  <%= f.select :kind, Post.kinds.keys.map { |k| [t("enums.post.kind.#{k}"), k] }, include_blank: "選択してください" %>
 
   <p> 産地国 </p>
-  <%= f.select :origin_country, Post.origin_countries.keys.map { |k| [t("enums.post.origin_country.#{k}"), k] } %>
+  <%= f.select :origin_country, Post.origin_countries.keys.map { |k| [t("enums.post.origin_country.#{k}"), k] }, include_blank: "選択してください" %>
 
   <p> 場所 </p>
-  <%= f.select :place, Post.places.keys.map { |k| [t("enums.post.place.#{k}"), k] } %>
+  <%= f.select :place, Post.places.keys.map { |k| [t("enums.post.place.#{k}"), k] }, include_blank: "選択してください" %>
 
   <%= f.submit '投稿' %>
 

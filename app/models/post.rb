@@ -8,10 +8,10 @@ class Post < ApplicationRecord
   validates :image,           presence: true
   validates :title,           presence: true
   validates :body,            presence: true
-  #validates :genre,          presence: true
-  #validates :kind,           presence: true
-  #validates :origin_country, presence: true
-  #validates :place,          presence: true
+  validates :genre,           presence: true
+  validates :kind,            presence: true
+  validates :origin_country,  presence: true
+  validates :place,           presence: true
   
   def get_image
     unless image.attached?
@@ -36,7 +36,7 @@ class Post < ApplicationRecord
     coffee: 1,
     cup:    2,
     goods:  3
-  }
+  }, _prefix: true
 
   enum  kind:{
     unknown:         0,
@@ -62,7 +62,7 @@ class Post < ApplicationRecord
     siphon:          20,
     cold_brew:       21,
     nitro_cold_brew: 22
-  }
+  }, _prefix: true
 
   enum origin_country:{
     unknown:            0,
@@ -98,13 +98,13 @@ class Post < ApplicationRecord
     cameroon:           30,
     congo:              31,
     papua_new_guinea:   32
-  }, _suffix: true
+  }, _prefix: true
 
   enum place:{
     blank:0,
     cafe: 1,
     house:2,
     other:3
-  }, _suffix: true
+  }, _prefix: true
 
 end
