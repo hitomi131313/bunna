@@ -29,7 +29,11 @@ class Post < ApplicationRecord
   scope :latest, -> {order(created_at: :desc)}
   scope :old,    -> {order(created_at: :asc)}
 
-  scope :genre, ->(s) { where(genre: Post.genres.keys & s) }
+  scope :genre,          ->(s) { where(genre: Post.genres.keys & s) }
+  scope :kind,           ->(s) { where(kind: Post.kinds.keys & s) }
+  scope :origin_country, ->(s) { where(origin_country: Post.origin_countries.keys & s) }
+  scope :place,          ->(s) { where(place: Post.places.keys & s) }
+
 
   enum genre: {
     blank:  0,
