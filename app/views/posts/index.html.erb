@@ -1,9 +1,10 @@
 <%= form_with url:posts_path, method: :get do |f| %>
   <div class="form-group col-5">
-    <%= f.label :selected_genre %>
+    <%= f.label :selected_genre, "ジャンル選択" %>
     <div class="radio">
       <%= f.collection_check_boxes :selected_genre, Post.genres, :first, :first %>
-      <%= f.submit "kensaku" %>
+      <%#= s.check_box checked: @genre.nil? || @genre.include?(s.value) %>
+      <%= f.submit "検索" %>
     </div>
   </div>
 <% end %>

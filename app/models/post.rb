@@ -29,7 +29,7 @@ class Post < ApplicationRecord
   scope :latest, -> {order(created_at: :desc)}
   scope :old,    -> {order(created_at: :asc)}
 
-  scope :genre, ->(s) { where(genre: Post.genres.keys & s) if s.present? }
+  scope :genre, ->(s) { where(genre: Post.genres.keys & s) }
 
   enum genre: {
     blank:  0,
