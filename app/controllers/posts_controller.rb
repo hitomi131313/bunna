@@ -20,16 +20,26 @@ class PostsController < ApplicationController
   end
 
   def index
-    if params[:latest]
-      @post = Post.latest
-    elsif params[:old]
-      @post = Post.old
+    if params[:sort] == 'latest'
+      @posts = Post.latest
+    elsif params[:sort] == 'old'
+      @posts = Post.old
     else
-      @post = Post.all
+      @posts = Post.all
     end
-    if params[:selected_genre].present? && params[:selected_genre].length >= 2
-      @post = @post.genre(params[:selected_genre])
+    if params[:selected_genre].present? 
+      @posts = @posts.where(genre:params[:selected_genre])
     end
+    if params[:selected_kind].present?
+      @posts = @posts.where(kind:params[:selected_kind])
+    end
+    if params[:selected_origin_country].present?
+      @posts = @posts.where(origin_country:params[:selected_origin_country])
+    end
+    if params[:selected_place].present?
+      @posts = @posts.where(place:params[:selected_place])
+    end
+
     #@genre = params[:selected_genre]
 
   end

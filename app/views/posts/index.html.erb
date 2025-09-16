@@ -1,36 +1,46 @@
-<%= form_with url:posts_path, method: :get do |f| %>
+<%= form_with url:posts_path, method: :get, id:"search_form" do |f| %>
   <div class="form-group col-5">
     <%= f.label :selected_genre, "ジャンル選択" %> <br>
     <div class="radio">
-      <%= f.collection_check_boxes :selected_genre, Post.genres, :first, :first %>
-      <%#= s.check_box checked: @genre.nil? || @genre.include?(s.value) %>
+
+      <%= f.collection_check_boxes :selected_genre, Post.genres.keys, :to_s, ->(k){t("enums.post.genre.#{k}")}, {include_hidden: false} do |b| %>
+      <%= b.check_box(checked: (params[:selected_genre].present?) ?  params[:selected_genre].include?(b.value): nil ) %>
+      <%= b.label%>
+      <% end %>
     </div>
 
     <div class="form-group col-5">
       <%= f.label :selected_kind, "種類選択" %> <br>
-        <%= f.collection_select :selected_kind, Post.kinds, :first, :first %>
+        <%= f.collection_select :selected_kind, Post.kinds.keys, :to_s, ->(k){t("enums.post.kind.#{k}")}, {selected: params[:selected_kind], include_blank: "選択してください"} %>
     </div>
 
     <div class="form-group col-5">
       <%= f.label :selected_origin_country, "産地国選択" %> <br>
-        <%= f.collection_select :selected_origin_country, Post.origin_countries, :first, :first %>
+        <%= f.collection_select :selected_origin_country, Post.origin_countries.keys, :to_s, ->(k){t("enums.post.origin_country.#{k}")}, {selected: params[:selected_origin_country],include_blank: "選択してください"} %>
     </div>
 
     <div class="form-group col-5">
       <%= f.label :selected_place, "場所選択" %> <br>
-        <%= f.collection_select :selected_place, Post.places, :first, :first %>
+        <%= f.collection_select :selected_place, Post.places.keys, :to_s, ->(k){t("enums.post.place.#{k}")}, {selected: params[:selected_place], include_blank: "選択してください"} %>
     </div>
 
     <%= f.submit "検索" %>
   </div>
-<% end %>
-
+  <%= f.hidden_field :sort,value: params[:sort], id:"sort" %>
 <p>
-  <%= link_to "新しい順", posts_path(latest: "true") %>
-  <%= link_to "古い順", posts_path(old: "true") %>
+  <a href="javascript:onSort('latest')" >新しい順</a>
+  <a href="javascript:onSort('old')" >古い順</a>
 </p>
+<% end %>
+<script>
+function onSort(value){
+  document.getElementById('sort').value=value;
+// alert(document.getElementById('sort').value);
+  document.getElementById('search_form').submit();
+}
+</script>
 
-<% @post.each do |post| %>
+<% @posts.each do |post| %>
 <div class="card w-50 mx-auto mt-4 shadow-lg">
   <%= link_to post_path(post.id) do %>
     <%= image_tag post.get_image, class: "card-img-top"; %>
