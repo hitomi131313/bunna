@@ -25,8 +25,9 @@ class PostsController < ApplicationController
     elsif params[:sort] == 'old'
       @posts = Post.old
     else
-      @posts = Post.all
+      @posts = Post.all.latest
     end
+
     if params[:selected_genre].present? 
       @posts = @posts.where(genre:params[:selected_genre])
     end
