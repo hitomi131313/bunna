@@ -7,9 +7,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.all.latest
     if params[:sort] == 'latest'
-      @posts = Post.latest
+      @posts = @posts.latest
     else params[:sort] == 'old'
-      @posts = Post.old
+      @posts = @posts.old
     end
 
     if params[:selected_genre].present? 
