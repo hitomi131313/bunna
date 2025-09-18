@@ -1,5 +1,12 @@
-
+<div class='containar'>
+  <div class='row'>
+    <div class='col-3' style="background-color: #d2b48c;" >
       <%= render 'search', url: posts_path %>
+    </div>
 
+    <div class='col-9'>
       <%= render 'index', posts: @posts %>
+    </div>
+  </div>
+</div>
 

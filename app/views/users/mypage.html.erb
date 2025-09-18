@@ -1,8 +1,18 @@
-<%= render 'posts/search', url: mypage_path  %>
+<div class='containar'>
+  <div class='row'>
+    <div class='col-3' style="background-color: #d2b48c;" >
+      <%= render 'posts/search', url: mypage_path  %>
+    </div>
 
-<div>
-  <h3><%= @user.name %></h3>
-  <%= link_to "プロフィール編集", edit_user_path(@user.id) %>
+    <div class='col-9'>
+      <div>
+        <h3><%= @user.name %></h3>
+        <%= link_to "プロフィール編集", edit_user_path(@user.id) %>
+      </div>
+
+      <div>
+        <%= render 'posts/index', posts: @my_posts %>
+      </div>
+    </div>
+  </div>
 </div>
-
-<%= render 'posts/index', posts: @my_posts %>

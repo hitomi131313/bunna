@@ -1,7 +1,17 @@
-<%= render 'posts/search', url: user_path %>
+<div class='containar'>
+  <div class='row'>
+    <div class='col-3' style="background-color: #d2b48c;" >
+      <%= render 'posts/search', url: user_path %>
+    </div>
 
-<div>
-  <h3><%= @user.name %></h3>
+    <div class='col-9'>
+      <div>
+        <h3><%= @user.name %></h3>
+      </div>
+
+      <div>
+        <%= render 'posts/index', posts: @posts %>
+      </div>
+    </div>
+  </div>
 </div>
-
-<%= render 'posts/index', posts: @posts %>
