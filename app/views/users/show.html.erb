@@ -1,32 +1,7 @@
+<%= render 'posts/search' %>
+
 <div>
   <h3><%= @user.name %></h3>
 </div>
 
-<div class="card-list-container py-5">
-  <% @posts.each do |posts| %>
-  <div class="caed w-50 mx-auto mt-4 shadow-lg">
-    <%= link_to post_path(posts.id) do %>
-      <%= image_tag posts.get_image, class: "card-img-top" %>
-    <% end %>
-    <div class="card-body">
-      <div class="row">
-        <div class="col-2">
-          <%= image_tag posts.user.get_profile_image(100,100), class: "mt-3 rounded-cercle"; %>
-        </div>
-        <div class="col-10">
-          <p class="card-title"> ユーザーネーム : <%= link_to user_path(@user.id) do %>
-                                                  <%= posts.user.name %>
-                                                 <% end %> 
-                                                 </p>
-          <p class="card-title"> タイトル : <%= posts.title %> </p>
-          <p class="card-text"> 本文 : <%= posts.body %>  </p>
-          <%#= posts.genre %>
-          <%#= posts.kind %>
-          <%#= posts.origin_country %>
-          <%#= posts.place %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% end %>
-</div>
+<%= render 'posts/index', posts: @posts %>

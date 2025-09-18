@@ -5,7 +5,26 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.all
+    @posts = @user.posts.all.latest
+    if params[:sort] == 'latest'
+      @posts = Post.latest
+    else params[:sort] == 'old'
+      @posts = Post.old
+    end
+
+    if params[:selected_genre].present? 
+      @posts = @posts.where(genre:params[:selected_genre])
+    end
+    if params[:selected_kind].present?
+      @posts = @posts.where(kind:params[:selected_kind])
+    end
+    if params[:selected_origin_country].present?
+      @posts = @posts.where(origin_country:params[:selected_origin_country])
+    end
+    if params[:selected_place].present?
+      @posts = @posts.where(place:params[:selected_place])
+    end
+
   end
 
   def edit
@@ -25,7 +44,25 @@ class UsersController < ApplicationController
 
   def mypage
     @user = current_user
-    @my_post = @user.posts.all
+    @my_posts = @user.posts.all.latest
+    if params[:sort] == 'latest'
+      @my_posts = @my_posts.latest
+    else params[:sort] == 'old'
+      @my_posts = @my_posts.old
+    end
+
+    if params[:selected_genre].present? 
+      @my_posts = @my_posts.where(genre:params[:selected_genre])
+    end
+    if params[:selected_kind].present?
+      @my_posts = @my_posts.where(kind:params[:selected_kind])
+    end
+    if params[:selected_origin_country].present?
+      @my_posts = @my_posts.where(origin_country:params[:selected_origin_country])
+    end
+    if params[:selected_place].present?
+      @my_posts = @my_posts.where(place:params[:selected_place])
+    end
     #@following_posts = Post.where(user_id: @user.following_ids).all
   end
 
