@@ -2,36 +2,39 @@
   <div class="form-group">
     <%= f.label :selected_genre, "ジャンル選択" %> <br>
     <div class="radio">
-
       <%= f.collection_check_boxes :selected_genre, Post.genres.keys, :to_s, ->(k){t("enums.post.genre.#{k}")}, {include_hidden: false} do |b| %>
-      <%= b.check_box(checked: (params[:selected_genre].present?) ?  params[:selected_genre].include?(b.value): nil ) %>
-      <%= b.label%>
+      <%= b.check_box(checked: (params[:selected_genre].present?) ? params[:selected_genre].include?(b.value): nil ) %>
+      <%= b.label %>
       <% end %>
     </div>
 
     <div class="form-group">
       <%= f.label :selected_kind, "種類選択" %> <br>
-        <%= f.collection_select :selected_kind, Post.kinds.keys, :to_s, ->(k){t("enums.post.kind.#{k}")}, {selected: params[:selected_kind], include_blank: "選択してください"} %>
+      <%= f.collection_select :selected_kind, Post.kinds.keys, :to_s, ->(k){t("enums.post.kind.#{k}")}, {selected: params[:selected_kind], include_blank: "選択してください"} %>
     </div>
 
     <div class="form-group">
       <%= f.label :selected_origin_country, "産地国選択" %> <br>
-        <%= f.collection_select :selected_origin_country, Post.origin_countries.keys, :to_s, ->(k){t("enums.post.origin_country.#{k}")}, {selected: params[:selected_origin_country],include_blank: "選択してください"} %>
+      <%= f.collection_select :selected_origin_country, Post.origin_countries.keys, :to_s, ->(k){t("enums.post.origin_country.#{k}")}, {selected: params[:selected_origin_country],include_blank: "選択してください"} %>
     </div>
 
     <div class="form-group">
       <%= f.label :selected_place, "場所選択" %> <br>
-        <%= f.collection_select :selected_place, Post.places.keys, :to_s, ->(k){t("enums.post.place.#{k}")}, {selected: params[:selected_place], include_blank: "選択してください"} %>
+      <%= f.collection_select :selected_place, Post.places.keys, :to_s, ->(k){t("enums.post.place.#{k}")}, {selected: params[:selected_place], include_blank: "選択してください"} %>
     </div>
 
     <%= f.submit "検索" %>
   </div>
+
+  
+
   <%= f.hidden_field :sort,value: params[:sort], id:"sort" %>
     <p>
       <a href="javascript:onSort('latest')" >新しい順</a>
       <a href="javascript:onSort('old')" >古い順</a>
     </p>
   <% end %>
+
 <script>
 function onSort(value){
   document.getElementById('sort').value=value;
