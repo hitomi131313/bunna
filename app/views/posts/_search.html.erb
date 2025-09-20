@@ -26,14 +26,16 @@
     <%= f.submit "検索" %>
   </div>
 
-  
+
 
   <%= f.hidden_field :sort,value: params[:sort], id:"sort" %>
     <p>
       <a href="javascript:onSort('latest')" >新しい順</a>
       <a href="javascript:onSort('old')" >古い順</a>
     </p>
-  <% end %>
+
+<% end %>
+
 
 <script>
 function onSort(value){
