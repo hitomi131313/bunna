@@ -1,7 +1,12 @@
 <div class="container" style="background-color: #e2d4cb;">
   <div class='row'>
-    <div class='col-3 mx-0' style="background-color: #eee6e2;" >
-      <%= render 'posts/search', url: user_path %>
+    <div class='col-3 p-3' style="background-color: #eee6e2;" >
+      <div class="card shadow-sm rounded-3" style="background-color: #d0b9af; color:#715412;">
+        <div class="card-body">
+          <h5 class="card-title mb-3 fw-bold">検索条件</h5>
+          <%= render 'posts/search', url: user_path %>
+        </div>
+      </div>
     </div>
 
     <div class='col-9'>
