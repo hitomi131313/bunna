@@ -1,30 +1,64 @@
-<h2>投稿編集</h2>
+<div class="container d-flex justify-content-center" style="background-color: #e2d4ce;">
+  <div class="card w-75 shadow-sm my-4 mt-5">
+    <%= image_tag @post.get_image, class:"card-img-top" %>
 
-<% if @post.errors.any? %>
-  <%= @post.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @post.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+    <div class="card-body">
+     <% if @post.errors.any? %>
+        <div class="alert alert-danger">
+          <%= @post.errors.count %>件のエラーが発生しました
+          <ul>
+            <% @post.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-    <%= form_with model:@post do |f| %>
-      <p> 画像 </p>
-      <%= f.file_field :image, accept: "image/*" %>
-      <p> タイトル </p>
-      <%= f.text_field :title, autofoucus: true %>
-      <p> 本文 </p>
-      <%= f.text_field :body, autofoucus: true %>
-      <p> ジャンル </p>
-      <%#= f.text_field :genre, autofoucus: true %>
-      <p> 種類 </p>
-      <%#= f.text_field :kind, autofoucus: true %>
-      <p> 産地国 </p>
-      <%#= f.text_field :origin_country, autofoucus: true %>
-      <p> 場所 </p>
-      <%#= f.text_field :place, autofoucus: true %>
-      <p><%= f.submit "変更を保存" %></p>
-    <% end %>
+      <%= form_with model: @post do |f| %>
+        <%= f.hidden_field :image %>
 
-  <%= link_to "投稿を削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+        <div class="mb-3">
+          <%= f.label :title, "タイトル" %>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :body, "本文" %>
+          <%= f.text_area :body, class: "form-control" %>
+        </div>
+
+        <div class="mb-3 row">
+          <%= f.label :genre, "ジャンル", class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= f.select :genre, Post.genres.keys.map { |k| [t("enums.post.genre.#{k}"), k] }, { include_blank: "選択してください" }, { class: "form-select" } %>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <%= f.label :kind, "種類", class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= f.select :kind, Post.kinds.keys.map { |k| [t("enums.post.kind.#{k}"), k] }, { include_blank: "選択してください" }, { class: "form-select" } %>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <%= f.label :origin_country, "産地国", class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= f.select :origin_country, Post.origin_countries.keys.map { |k| [t("enums.post.origin_country.#{k}"), k] }, { include_blank: "選択してください" }, { class: "form-select" } %>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <%= f.label :place, "場所", class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= f.select :place, Post.places.keys.map { |k| [t("enums.post.place.#{k}"), k] }, { include_blank: "選択してください" }, { class: "form-select" } %>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <%= f.submit '更新する', class: "btn btn-secondary w-100 my-3" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
