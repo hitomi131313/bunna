@@ -31,28 +31,36 @@
             <%= f.text_area :body, class: "form-control", id: "floatingBody" %>
           </div>
 
-          <div class="mb-3">
-            <%= f.label :genre, "ジャンル", class: "form-label" %>
-            <%= f.select :genre, Post.genres.keys.map { |k| [t("enums.post.genre.#{k}"), k] }, { include_blank: "選択してください" }, { class: "form-select" } %>
+          <div class="mb-3 row">
+            <%= f.label :genre, "ジャンル", class: "col-sm-2 col-form-label" %>
+            <div class="col-sm-10">
+              <%= f.select :genre, Post.genres.keys.map { |k| [t("enums.post.genre.#{k}"), k] }, { include_blank: "選択してください" }, { class: "form-select" } %>
+            </div>
           </div>
 
-          <div class="mb-3">
-            <%= f.label :kind, "種類", class: "form-label" %>
-            <%= f.select :kind, Post.kinds.keys.map { |k| [t("enums.post.kind.#{k}"), k] }, { include_blank: "選択してください" }, { class: "form-select" } %>
+          <div class="mb-3 row">
+            <%= f.label :kind, "種類", class: "col-sm-2 col-form-label" %>
+            <div class="col-sm-10">
+              <%= f.select :kind, Post.kinds.keys.map { |k| [t("enums.post.kind.#{k}"), k] }, { include_blank: "選択してください" }, { class: "form-select" } %>
+            </div>
           </div>
 
-          <div class="mb-3">
-            <%= f.label :origin_country, "産地国", class: "form-label" %>
-            <%= f.select :origin_country, Post.origin_countries.keys.map { |k| [t("enums.post.origin_country.#{k}"), k] }, { include_blank: "選択してください" }, { class: "form-select" } %>
+          <div class="mb-3 row">
+            <%= f.label :origin_country, "産地国", class: "col-sm-2 col-form-label" %>
+            <div class="col-sm-10">
+              <%= f.select :origin_country, Post.origin_countries.keys.map { |k| [t("enums.post.origin_country.#{k}"), k] }, { include_blank: "選択してください" }, { class: "form-select" } %>
+            </div>
           </div>
 
-          <div class="mb-3">
-            <%= f.label :place, "場所", class: "form-label" %>
-            <%= f.select :place, Post.places.keys.map { |k| [t("enums.post.place.#{k}"), k] }, { include_blank: "選択してください" }, { class: "form-select" } %>
+          <div class="mb-3 row">
+            <%= f.label :place, "場所", class: "col-sm-2 col-form-label" %>
+            <div class="col-sm-10">
+              <%= f.select :place, Post.places.keys.map { |k| [t("enums.post.place.#{k}"), k] }, { include_blank: "選択してください" }, { class: "form-select" } %>
+            </div>
           </div>
 
           <div class="text-center">
-            <%= f.submit '投稿', class: "btn btn-secondary w-100" %>
+            <%= f.submit '投稿', class: "btn btn-secondary w-100 my-3" %>
           </div>
         <% end %>
       </div>
