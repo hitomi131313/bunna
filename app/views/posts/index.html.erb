@@ -4,7 +4,13 @@
       <%= render 'search', url: posts_path %>
     </div>
 
-    <div class='col-9'>
+    <div class='col-9'><div class='d-flex justify-content-between align-items-center px-3 py-2 my-3 text-white fw-bold' style="background-color: #b28c7b;">
+      <div>
+        <h3>投稿一覧</h3>
+      </div>
+    </div>
+
+    <div>
       <%= render 'index', posts: @posts %>
     </div>
   </div>
