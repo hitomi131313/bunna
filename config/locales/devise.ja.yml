@@ -9,6 +9,7 @@ ja:
       signed_out: "ログアウトしました"
     failure:
       not_found_in_database: "ユーザーが登録されていません"
+      unauthenticated: "ログインされていません"
   errors:
     messages:
       already_confirmed: "はすでに登録済みです。ログインしてください。"

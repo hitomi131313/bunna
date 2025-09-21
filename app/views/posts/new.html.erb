@@ -1,36 +1,61 @@
-<h1>New Posts</h1>
+<div class="post-new py-5 bg-light">
+  <div class="container d-flex justify-content-center" style="background-color: #e2d4cb;">
+    <div class="card w-75 mx-75 my-4 shadow-lg">
+      <div class="card-body">
+        <h1 class="text-center mb-4">New Post</h1>
 
-<% if @post.errors.any? %>
-  <%= @post.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @post.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+        <% if @post.errors.any? %>
+          <div class="alert alert-danger">
+            <%= @post.errors.count %>件のエラーが発生しました
+            <ul>
+              <% @post.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
-<%= form_with model: @post do |f| %>
-  <p> 画像 </p>
-  <%= f.file_field :image, accept: "image/*" %>
+        <%= form_with model: @post do |f| %>
+          <div class="mb-3">
+            <%= f.label :image, "画像" %><br>
+            <%= f.file_field :image, accept: "image/*" %>
+          </div>
 
-  <p> タイトル </p>
-  <%= f.text_field :title %>
+          <div class="mb-3">
+            <%= f.label :title, "タイトル", for: "floatingTitle" %>
+            <%= f.text_field :title, class: "form-control", id: "floatingTitle" %>
+          </div>
 
-  <p> 本文 </p>
-  <%= f.text_area :body %>
+          <div class="mb-3">
+            <%= f.label :body, "本文", for: "floatingBody" %>
+            <%= f.text_area :body, class: "form-control", id: "floatingBody" %>
+          </div>
 
-  <p> ジャンル </p>
-  <%= f.select :genre, Post.genres.keys.map { |k| [t("enums.post.genre.#{k}"), k] }, include_blank: "選択してください" %>
+          <div class="mb-3">
+            <%= f.label :genre, "ジャンル", class: "form-label" %>
+            <%= f.select :genre, Post.genres.keys.map { |k| [t("enums.post.genre.#{k}"), k] }, { include_blank: "選択してください" }, { class: "form-select" } %>
+          </div>
 
-  <p> 種類 </p>
-  <%= f.select :kind, Post.kinds.keys.map { |k| [t("enums.post.kind.#{k}"), k] }, include_blank: "選択してください" %>
+          <div class="mb-3">
+            <%= f.label :kind, "種類", class: "form-label" %>
+            <%= f.select :kind, Post.kinds.keys.map { |k| [t("enums.post.kind.#{k}"), k] }, { include_blank: "選択してください" }, { class: "form-select" } %>
+          </div>
 
-  <p> 産地国 </p>
-  <%= f.select :origin_country, Post.origin_countries.keys.map { |k| [t("enums.post.origin_country.#{k}"), k] }, include_blank: "選択してください" %>
+          <div class="mb-3">
+            <%= f.label :origin_country, "産地国", class: "form-label" %>
+            <%= f.select :origin_country, Post.origin_countries.keys.map { |k| [t("enums.post.origin_country.#{k}"), k] }, { include_blank: "選択してください" }, { class: "form-select" } %>
+          </div>
 
-  <p> 場所 </p>
-  <%= f.select :place, Post.places.keys.map { |k| [t("enums.post.place.#{k}"), k] }, include_blank: "選択してください" %>
+          <div class="mb-3">
+            <%= f.label :place, "場所", class: "form-label" %>
+            <%= f.select :place, Post.places.keys.map { |k| [t("enums.post.place.#{k}"), k] }, { include_blank: "選択してください" }, { class: "form-select" } %>
+          </div>
 
-  <%= f.submit '投稿' %>
-
-<% end %>
+          <div class="text-center">
+            <%= f.submit '投稿', class: "btn btn-secondary w-100" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
