@@ -1,25 +1,42 @@
+<style>
+  table {
+    table-layout: fixed;
+    width: 100%;
+  }
+
+  td.truncate {
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    max-width: 5px;
+  }
+</style>
+
 <% posts.each do |post| %>
-  <div class="col-md-4 col-sm-6 col-lg-3">
-  <div class="card  mx-auto mt-4 shadow-lg">
+  <div class="col-lg-4 col-md-6">
+  <div class="card  mx-auto my-3 shadow-lg vh-50">
     <%= link_to post_path(post.id) do %>
       <%= image_tag post.get_image, class: "card-img-top"; %>
     <% end %>
     <div class="card-body">
       <div class="row">
-        <div class="col-md-2">
-          <%= image_tag post.user.get_profile_image(100,100), class: "mt-3 rounded-cercle"; %>
+        <div class="col-2">
+          <%= image_tag post.user.get_profile_image(30,30), class: "mt-3 rounded-cercle"; %>
         </div>
-        <div class="col-md-10">
-          <p class="card-title"> ユーザーネーム : <%= link_to user_path(post.user_id) do %>
-                                                  <%= post.user.name %>
-                                                  <% end %> 
-                                                  </p>
-          <p class="card-title"> タイトル : <%= post.title %> </p>
-          <p class="card-text"> 本文 : <%= post.body %>  </p>
-          <%#= post.genre %>
-          <%#= post.kind %>
-          <%#= post.origin_country %>
-          <%#= post.place %>
+        <div class="col-10">
+          <table>
+            <tr>
+              <td>name</td>
+              <td>: <%= link_to user_path(post.user_id) do %>
+                    <%= post.user.name %>
+                  <% end %> 
+              </td>
+            </tr>
+            <tr>
+              <td>title</td>
+              <td class="truncate">: <%= post.title %></td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>
