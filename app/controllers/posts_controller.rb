@@ -40,6 +40,10 @@ class PostsController < ApplicationController
     if params[:selected_place].present?
       @posts = @posts.where(place:params[:selected_place])
     end
+    unless @posts.any?
+      @posts = Post.all.latest
+    end
+
 
     #@genre = params[:selected_genre]
 
