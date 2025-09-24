@@ -3,6 +3,16 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:show]
   before_action :is_matching_login_user, only: [:edit, :update]
 
+  def index
+    @keyword = params[:keyword]
+		@method = params[:method]
+    if params[:keyword].present?
+      @users = User.search_for(@keyword, @method).latest
+    else
+      @users = User.none
+    end
+  end
+
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.all.latest

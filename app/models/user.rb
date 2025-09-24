@@ -16,6 +16,23 @@ class User < ApplicationRecord
   has_many :comments,  dependent: :destroy
   has_many :favorites, dependent: :destroy
 
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old,    -> {order(created_at: :asc)}
+
+  def self.search_for(keyword, method)
+    if method == "perfect"
+      where(name: keyword)
+    elsif method == "forward"
+      where("name LIKE ?","#{keyword}%")
+    elsif method == "backward"
+      where("name LIKE ?","%#{keyword}")
+    elsif method == "partial"
+      where("name LIKE ?","%#{keyword}%")
+    else
+      none
+    end
+  end
+
   def get_profile_image(width,height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
