@@ -4,10 +4,10 @@ class UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
 
   def index
-    @keyword = params[:keyword]
-		@method = params[:method]
-    if params[:keyword].present?
-      @users = User.search_for(@keyword, @method).latest
+    @user_keyword = params[:user_keyword]
+		@user_method = params[:user_method]
+    if params[:user_keyword].present?
+      @users = User.user_search_for(@user_keyword, @user_method).latest
     else
       @users = User.none
     end
