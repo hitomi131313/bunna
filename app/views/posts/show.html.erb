@@ -1,69 +1,104 @@
 <div class="post-detail py-5 bg-light">
-  <div class="container d-flex justify-content-center" style="background-color: #e2d4cb;">
-    <div class="card w-75 mx-75 my-4 shadow-lg">
-      <%= image_tag @post.get_image, class:"card-img-top" %>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-sm col-md-2">
-            <%= image_tag @post.user.get_profile_image(100,100), class: "img-fluid rounded-cercle"; %>
+  <div class="container">
+    <div class="row justify-content-center" style="background-color: #e2d4cb;">
+      <div class="col-lg-8">
+        <div class="card my-4 shadow-lg">
+          <%= image_tag @post.get_image, class:"card-img-top" %>
+
+          <div class="card-body">
+            <!-- ユーザー情報 -->
+            <div class="row align-items-center mb-3">
+              <div class="col-2 text-center">
+                <%= image_tag @post.user.get_profile_image(60,60), class: "rounded-circle"; %>
+              </div>
+              <div class="col-10 d-flex align-items-center">
+                <span class="fw-bold me-2">name  :</span>
+                <%= link_to user_path(@post.user_id), class:"text-decoration-none" do %>
+                  <%= @post.user.name %>
+                <% end %>
+              </div>
+            </div>
+
+            <!-- 投稿内容 -->
+            <table class="table table-sm table-borderless w-auto">
+              <tr>
+                <td class="fw-bold">title</td>
+                <td>: <%= @post.title %></td>
+              </tr>
+              <tr>
+                <td class="fw-bold">本文</td>
+                <td>: <%= @post.body %></td>
+              </tr>
+              <tr>
+                <td class="fw-bold">種類</td>
+                <td>: <%= @post.kind_i18n %></td>
+              </tr>
+              <tr>
+                <td class="fw-bold">産地国</td>
+                <td>: <%= @post.origin_country_i18n %></td>
+              </tr>
+              <tr>
+                <td class="fw-bold">場所</td>
+                <td>: <%= @post.place_i18n %></td>
+              </tr>
+            </table>
+
+            <span><i class="fa-solid fa-calendar-days"></i> <%= @post.created_at.strftime('%Y/%m/%d %H:%M') %> ｜ </span>
+
+            <!-- いいね -->
+            <% if @post.favorited_by?(current_user) %>
+              <span>
+                <%= link_to post_favorite_path(@post), class:"text-dark", method: :delete do %>
+                  ♥<%= @post.favorites.count %>いいね
+                <% end %>
+              </span>
+            <% else %>
+              <span>
+                <%= link_to post_favorite_path(@post), class:"text-dark", method: :post do %>
+                  ♡<%= @post.favorites.count %>いいね
+                <% end %>
+              </span>
+            <% end %>
+
+            <br>
+            <% if @post.user == current_user %>
+              <%= link_to "投稿を編集", edit_post_path(@post.id), class:"btn btn-outline-secondary btn-sm mt-2" %>
+            <% end %>
+
+            <hr>
+
+            <!-- コメント一覧 -->
+            <div class="comments card-text">
+              <h5 class="mt-3"><%= @post.comments.count %>件コメント</h5>
+              <% @post.comments.each do |comment| %>
+                <div class="row mb-3 border p-2 rounded">
+                  <div class="col-2 text-center">
+                    <%= image_tag comment.user.get_profile_image(50,50), class:"rounded-circle"; %>
+                  </div>
+                  <div class="col-10">
+                    <p class="mb-1"><small><%= comment.created_at.strftime('%Y/%m/%d') %></small></p>
+                    <p class="mb-1"><%= comment.comment %></p>
+                    <p class="text-muted"><%= comment.user.name %></p>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+
+            <hr>
+
+            <!-- コメントフォーム -->
+            <div class="new-comment card-text">
+              <%= form_with model: [@post, @comment], local: true do |f| %>
+                <div class="form-group mb-2">
+                  <%= f.label :comment, "コメントする", class: "form-label" %>
+                  <%= f.text_area :comment, rows: 2, placeholder: "コメントをここに", class: "form-control" %>
+                </div>
+                <%= f.submit "送信する", class: "btn btn-secondary btn-sm" %>
+              <% end %>
+            </div>
           </div>
-         <div class="col-sm-12 col-md-10">
-           <p class="card-title"> ユーザーネーム : <%= link_to user_path(@post.user_id) do %>
-                                                  <%= @post.user.name %>
-                                                  <% end %>
-                                                  </p>
-           <p> タイトル : <%= @post.title %> </p>
-           <p> 本文 : <%= @post.body %> </p>
-           <%#= @post.genre %>
-           <p> 種類 : <%= @post.kind_i18n %> </p>
-           <p> 産地国 : <%= @post.origin_country_i18n %> </p>
-           <p> 場所 : <%= @post.place_i18n %> </p>
-           <span><i class="fa-solid fa-calendar-days"></i> <%= @post.created_at.strftime('%Y/%m/%d %H:%M') %> ｜ </span>
-
-           <% if @post.favorited_by?(current_user) %>
-             <span>
-               <%= link_to post_favorite_path(@post), class:"text-dark", method: :delete do %>
-                 ♥<%= @post.favorites.count %>いいね
-               <% end %>
-             </span>
-           <% else %>
-             <span>
-               <%= link_to post_favorite_path(@post), class:"text-dark", method: :post do %>
-                 ♡<%= @post.favorites.count %>いいね
-               <% end %>
-             </span>
-           <% end %>
-
-           <br>
-           <% if @post.user == current_user %>
-             <%= link_to "投稿を編集", edit_post_path(@post.id) %>
-           <% end %>
-
-           <hr>
-           <div class="comments card-text">
-             <h5 class="mt-3"><%= @post.comments.count %>件コメント</h5>
-             <% @post.comments.each do |comment| %>
-               <div class="media-border mb-3">
-                 <%= image_tag comment.user.get_profile_image(50,50) %>
-                 <div class="media-body ml-4 p-3">
-                   <p><%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %></p>
-                   <p><%= comment.user.name %></p>
-                 </div>
-               </div>
-             <% end %>
-           </div>
-           <hr>
-           <div class="new-comment card-text">
-             <%= form_with model: [@post, @comment] do |f| %>
-               <div class="form-group">
-                 <label for="exampleFormControlTextarea1">コメントする</label>
-                 <%= f.text_area :comment, rows:'2', placeholder: "コメントをここに" %>
-                 <%= f.submit "送信する" %>
-               </div>
-             <% end %>
-           </div>
-         </div>
-       </div>
-     </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
