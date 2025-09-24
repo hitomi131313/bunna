@@ -25,15 +25,15 @@ class Post < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
-  def self.search_for(keyword, method)
-    if method == "perfect"
-      where(title: keyword)
-    elsif method == "forward"
-      where("title LIKE ?","#{keyword}%")
-    elsif method == "backward"
-      where("title LIKE ?","%#{keyword}")
-    elsif method == "partial"
-      where("title LIKE ?","%#{keyword}%")
+  def self.post_search_for(post_keyword, post_method)
+    if post_method == "perfect"
+      where(title: post_keyword)
+    elsif post_method == "forward"
+      where("title LIKE ?","#{post_keyword}%")
+    elsif post_method == "backward"
+      where("title LIKE ?","%#{post_keyword}")
+    elsif post_method == "partial"
+      where("title LIKE ?","%#{post_keyword}%")
     else
       none
     end

@@ -19,15 +19,15 @@ class User < ApplicationRecord
   scope :latest, -> {order(created_at: :desc)}
   scope :old,    -> {order(created_at: :asc)}
 
-  def self.search_for(keyword, method)
-    if method == "perfect"
-      where(name: keyword)
-    elsif method == "forward"
-      where("name LIKE ?","#{keyword}%")
-    elsif method == "backward"
-      where("name LIKE ?","%#{keyword}")
-    elsif method == "partial"
-      where("name LIKE ?","%#{keyword}%")
+  def self.user_search_for(user_keyword, user_method)
+    if user_method == "perfect"
+      where(name: user_keyword)
+    elsif user_method == "forward"
+      where("name LIKE ?","#{user_keyword}%")
+    elsif user_method == "backward"
+      where("name LIKE ?","%#{user_keyword}")
+    elsif user_method == "partial"
+      where("name LIKE ?","%#{user_keyword}%")
     else
       none
     end

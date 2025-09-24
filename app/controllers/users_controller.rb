@@ -15,7 +15,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.all.latest
+    @posts = @user.posts.latest
+
     if params[:sort] == 'latest'
       @posts = @posts.latest
     else params[:sort] == 'old'
@@ -35,6 +36,11 @@ class UsersController < ApplicationController
       @posts = @posts.where(place:params[:selected_place])
     end
 
+    @post_keyword = params[:post_keyword]
+		@post_method = params[:post_method]
+    if params[:post_keyword].present?
+      @posts = @posts.merge(Post.post_search_for(@post_keyword, @post_method)).latest
+    end
   end
 
   def edit
@@ -54,7 +60,7 @@ class UsersController < ApplicationController
 
   def mypage
     @user = current_user
-    @my_posts = @user.posts.all.latest
+    @my_posts = @user.posts.latest
     if params[:sort] == 'latest'
       @my_posts = @my_posts.latest
     else params[:sort] == 'old'
@@ -72,6 +78,12 @@ class UsersController < ApplicationController
     end
     if params[:selected_place].present?
       @my_posts = @my_posts.where(place:params[:selected_place])
+    end
+
+    @post_keyword = params[:post_keyword]
+		@post_method = params[:post_method]
+    if params[:post_keyword].present?
+      @my_posts = @my_posts.merge(Post.post_search_for(@post_keyword, @post_method)).latest
     end
     #@following_posts = Post.where(user_id: @user.following_ids).all
   end

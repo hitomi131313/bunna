@@ -20,7 +20,11 @@
       </div>
 
       <div class="row">
-        <%= render 'posts/index', posts: @my_posts %>
+      <% if @my_posts.any? %>
+          <%= render 'posts/index', posts: @my_posts %>
+        <% else %>
+          <p>該当の投稿は見つかりませんでした</p>
+        <% end %>
       </div>
     </div>
   </div>

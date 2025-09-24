@@ -41,10 +41,10 @@ class PostsController < ApplicationController
       @posts = @posts.where(place:params[:selected_place])
     end
 
-    @keyword = params[:keyword]
-		@method = params[:method]
-    if params[:keyword].present?
-      @posts = Post.search_for(@keyword, @method).latest
+    @post_keyword = params[:post_keyword]
+		@post_method = params[:post_method]
+    if params[:post_keyword].present?
+      @posts = Post.post_search_for(@post_keyword, @post_method).latest
     end
 
 
