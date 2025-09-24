@@ -76,9 +76,9 @@
                     <%= image_tag comment.user.get_profile_image(50,50), class:"rounded-circle"; %>
                   </div>
                   <div class="col-10">
-                    <p class="mb-1"><small><%= comment.created_at.strftime('%Y/%m/%d') %></small></p>
-                    <p class="mb-1"><%= comment.comment %></p>
                     <p class="text-muted"><%= comment.user.name %></p>
+                    <p class="mb-1"><%= comment.comment %></p>
+                    <p class="mb-1"><small><%= comment.created_at.strftime('%Y/%m/%d') %></small></p>
                   </div>
                 </div>
               <% end %>
