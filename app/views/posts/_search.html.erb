@@ -27,8 +27,8 @@
 
     <div class="form-group">
       <%= f.label :post_keyword, "キーワード検索" %> <br>
-      <%= f.text_field :post_keyword, placeholder: "titleを検索", value: params[:post_keyword] %>
-      <%= f.select :post_method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial"}, params[:post_method]), { include_blank: "選択してください" },{ include_hidden: false } %>
+      <%= f.text_field :post_keyword, placeholder: "titleを検索", value: params[:post_keyword], class: "form-select w-100" %>
+      <%= f.select :post_method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial"}, params[:post_method]), { include_blank: "選択してください"},{ include_hidden: false, class: "form-select w-100" }%>
     </div>
 
     <%= f.submit "検索" %>
