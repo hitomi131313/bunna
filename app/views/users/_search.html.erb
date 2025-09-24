@@ -1,8 +1,8 @@
 <%= form_with url: url, method: :get, local: true do |f| %>
   <div class="form-group">
-    <%= f.label :user_keyword, "ユーザ検索" %> <br>
-    <%= f.text_field :user_keyword, placeholder: "nameを検索"%>
-    <%= f.select :user_method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %>
+    <%= f.label :user_keyword, "ユーザ検索"%> <br>
+    <%= f.text_field :user_keyword, placeholder: "nameを検索", value: params[:user_keyword]%>
+    <%= f.select :user_method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial"}, params[:user_method]), { include_blank: "選択してください" } %>
     <%= f.submit "検索" %>
   </div>
 <% end %>
