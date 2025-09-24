@@ -2,86 +2,82 @@
   <div class="row">
 
   <!-- 左側サイト説明 -->
-    <div class="col-lg-6 col-md-6">
-      <div class="d-flex align-content-center justify-content-center">
-        <div class="text-center">
-          <h1 class="fw-bold">Bunna</h1>
-          <p class="lead">(サイト説明)</p>
-        </div>
+    <div class="col-lg-6 col-md-6 d-flex align-items-center justify-content-center text-center">
+      <div>
+        <h1 class="fw-bold">Bunna</h1>
+        <p class="lead">(サイト説明)</p>
       </div>
     </div>
+  
 
-  <!-- 右側signup_card -->
-    <div class="col-lg-6 col-md-6">
-      <div class="card shadow-sm m-3">
+  <!-- 右側 signup_card -->
+    <div class="col-lg-6 col-md-6 d-flex justify-content-center align-items-center">
+      <div class="card shadow-sm" style="max-width: 600px; width: 100%;">
         <div class="card-body">
           <h2 class="text-center mb-4">新規登録</h2>
-
+    
           <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
-          <%= render "devise/shared/error_messages", resource: resource %>
-
-          <!-- username -->
+            <%= render "devise/shared/error_messages", resource: resource %>
+    
+            <!-- username -->
             <div class="form-floating mb-3">
-              <%= f.label :name, "ユーザーネーム", for: "floatingUsername" %><br />
+              <%= f.label :name, "ユーザーネーム", for: "floatingUsername" %>
               <%= f.text_field :name, class: "form-control", id: "floatingUsername", placeholder: "ユーザーネーム", autofocus: true, autocomplete: "username" %>
             </div>
-
-          <!-- name_kanji -->
+    
+            <!-- name_kanji -->
             <div class="row mb-3">
-              <div class="col">
+              <div class="col-md-6 mb-3 mb-md-0">
                 <div class="form-floating">
                   <%= f.label :last_name, "姓（漢字）", for: "floatingLastName" %>
                   <%= f.text_field :last_name, class: "form-control", id: "floatingLastName", placeholder: "姓", autofocus: true, autocomplete: "family-name" %>
                 </div>
               </div>
-
-              <div class="col">
+              <div class="col-md-6">
                 <div class="form-floating">
                   <%= f.label :first_name, "名（漢字）", for: "floatingFirstName" %>
                   <%= f.text_field :first_name, class: "form-control", id: "floatingFirstName", placeholder: "名", autofocus: true, autocomplete: "given-name" %>
                 </div>
               </div>
             </div>
-
-          <!-- name_kana -->
+    
+            <!-- name_kana -->
             <div class="row mb-3">
-              <div class="col">
+              <div class="col-md-6 mb-3 mb-md-0">
                 <div class="form-floating">
                   <%= f.label :last_name_kana, "セイ（カタカナ）", for: "floatingLastNameKana" %>
-                  <%= f.text_field :last_name_kana, class: "form-control", id: "floatingLastNameKana", placeholder: "セイ",  autofocus: true, autocomplete: "off" %>
+                  <%= f.text_field :last_name_kana, class: "form-control", id: "floatingLastNameKana", placeholder: "セイ", autofocus: true, autocomplete: "off" %>
                 </div>
               </div>
-
-              <div class="col">
+              <div class="col-md-6">
                 <div class="form-floating">
                   <%= f.label :first_name_kana, "メイ（カタカナ）", for: "floatingFirstNameKana" %>
-                  <%= f.text_field :first_name_kana,  class: "form-control", id: "floatingFirstNameKana", placeholder: "メイ",autofocus: true, autocomplete: "off" %>
+                  <%= f.text_field :first_name_kana, class: "form-control", id: "floatingFirstNameKana", placeholder: "メイ", autofocus: true, autocomplete: "off" %>
                 </div>
               </div>
             </div>
-
-          <!-- email -->
+    
+            <!-- email -->
             <div class="form-floating mb-3">
               <%= f.label :email, "メールアドレス", for: "floatingEmail" %>
               <%= f.email_field :email, class: "form-control", id: "floatingEmail", placeholder: "name@example.com", autofocus: true, autocomplete: "email" %>
             </div>
-
-          <!-- password -->
+    
+            <!-- password -->
             <div class="form-floating mb-3">
               <%= f.label :password, "パスワード", for: "floatingPassword" %>
               <% if @minimum_password_length %>
-              (<%= @minimum_password_length %> 文字以上)
+                (<%= @minimum_password_length %> 文字以上)
               <% end %>
               <%= f.password_field :password, class: "form-control", id: "floatingPassword", placeholder: "Password", autocomplete: "new-password" %>
             </div>
-
-          <!-- password_confirmation -->
+    
+            <!-- password_confirmation -->
             <div class="form-floating mb-3">
               <%= f.label :password_confirmation, "パスワード（確認）", for: "floatingPasswordConfirmation" %>
               <%= f.password_field :password_confirmation, class: "form-control", id: "floatingPasswordConfirmation", placeholder: "Password", autocomplete: "new-password" %>
             </div>
-
-
+    
             <%= f.submit "新規登録", class: "btn btn-secondary w-100" %>
           <% end %>
 
