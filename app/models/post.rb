@@ -25,6 +25,20 @@ class Post < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
+  def self.search_for(keyword, method)
+    if method == "perfect"
+      where(title: keyword)
+    elsif method == "forward"
+      where("title LIKE ?","#{keyword}%")
+    elsif method == "backward"
+      where("title LIKE ?","%#{keyword}")
+    elsif method == "partial"
+      where("title LIKE ?","%#{keyword}%")
+    else
+      none
+    end
+  end
+
 
   scope :latest, -> {order(created_at: :desc)}
   scope :old,    -> {order(created_at: :asc)}
