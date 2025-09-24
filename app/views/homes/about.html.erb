@@ -1,4 +1,25 @@
 <style>
+  @media (max-width: 576px) {
+    .nav-tabs .nav-link .tab-label {
+      display: none;
+    }
+
+    .nav-tabs .nav-link.active .tab-label {
+      display: inline;
+    }
+  }
+
+
+  .nav-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav-tabs .nav-item {
+    flex-shrink: 0;
+  }
+  
+
   .nav-tabs .nav-link {
     background-color: #f5f5f5;
     color: #333;
@@ -24,188 +45,212 @@
 
 </style>
 
-<div class="container justify-content-center min-vh-100 pb-2" style="background-color: #e2d4cb;">
-
-  <div class="p-5">
-    <h2>このサイトについて</h2>
-    <p>
-      コーヒーの一杯で、新しい発見を。<br>
-      豆のこと、淹れ方のこと、香りのこと…コーヒーの知識を深めながら、
-      コーヒー好き同士で情報をシェアしましょう。
-    </p>
-    <p>
-      次の一杯をもっと特別な時間にするために、
-      あなただけの楽しみ方を見つけて広げてみませんか？
-    </p>
-  </div>
+<div class="container vh-100" style="background-color: #e2d4cb;">
+  <div class="row">
+    <div class="col-12 p-5">
+      <h2 class="m-3">このサイトについて</h2>
+      <p class="m-3">
+        コーヒーの一杯で、新しい発見を。<br>
+        豆のこと、淹れ方のこと、香りのこと…コーヒーの知識を深めながら、<br>
+        コーヒー好き同士で情報をシェアしましょう。
+      </p>
+      <p class="mx-3">
+        次の一杯をもっと特別な時間にするために、<br>
+        あなただけの楽しみ方を見つけて広げてみませんか？
+      </p>
+    </div>
 
   <!-- タブメニュー -->
-  <ul class="nav nav-tabs" id="coffeeTab" role="tablist">
-    <li class="nav-item" role="presentation">
-      <button class="nav-link active" id="basic-tab" data-bs-toggle="tab" data-bs-target="#basic" type="button" role="tab">1. コーヒーの基礎知識</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="types-tab" data-bs-toggle="tab" data-bs-target="#types" type="button" role="tab">2. コーヒーの種類</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="origin-tab" data-bs-toggle="tab" data-bs-target="#origin" type="button" role="tab">3. 産地別の特徴</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="roast-tab" data-bs-toggle="tab" data-bs-target="#roast" type="button" role="tab">4. 焙煎度</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="brew-tab" data-bs-toggle="tab" data-bs-target="#brew" type="button" role="tab">5. 抽出方法</button>
-    </li>
-  </ul>
-
-  <!-- タブの中身 -->
-  <div class="tab-content mt-3" id="coffeeTabContent">
-
-
-    <!-- 基礎知識 -->
-    <div class="tab-pane fade show active" id="basic" role="tabpanel">
-      <h2>1. コーヒーの基礎知識</h2>
-      <p>
-        コーヒーは「コーヒーノキ」という木になるコーヒーチェリーの種から作られます。
-        赤い果実の中にある種を取り出して乾燥・精製したものが「コーヒー豆」です。
-        主な品種は以下の通りです。
-      </p>
-      <ul>
-        <li><strong>アラビカ種</strong>：香り高く、酸味や甘みが豊か。全世界流通の約7割。</li>
-        <li><strong>ロブスタ種</strong>：苦味が強くカフェインも多い。病害虫に強く安価。</li>
-        <li><strong>リベリカ種</strong>：独特の香りを持つが生産量は少ない。</li>
+    <div class="col-12">
+      <ul class="nav nav-tabs" id="coffeeTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="basic-tab" data-bs-toggle="tab" data-bs-target="#basic" type="button" role="tab">
+          <span class="tab-number">1.</span> <span class="tab-label"> コーヒーの基礎知識</span></button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="types-tab" data-bs-toggle="tab" data-bs-target="#types" type="button" role="tab">
+          <span class="tab-number">2.</span> <span class="tab-label">コーヒーの種類</span></button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="origin-tab" data-bs-toggle="tab" data-bs-target="#origin" type="button" role="tab">
+          <span class="tab-number">3.</span> <span class="tab-label">産地別の特徴</span></button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="roast-tab" data-bs-toggle="tab" data-bs-target="#roast" type="button" role="tab">
+          <span class="tab-number">4.</span> <span class="tab-label">焙煎度</span></button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="brew-tab" data-bs-toggle="tab" data-bs-target="#brew" type="button" role="tab">
+          <span class="tab-number">5.</span> <span class="tab-label">抽出方法</span></button>
+        </li>
       </ul>
-    </div>
 
-    <!-- 種類 -->
-    <div class="tab-pane fade" id="types" role="tabpanel">
-      <h2>2. コーヒーの種類</h2>
-      <table class="table table-bordered" style="background-color: #b28c7b;">
-        <thead>
-          <tr>
-            <th class="text-white fw-bold">種類</th>
-            <th class="text-white fw-bold">特徴</th>
-          </tr>
-        </thead>
-        <tbody class="text-white">
-          <tr><td>エスプレッソ</td><td>高圧で抽出する30ml前後の濃厚なコーヒー。</td></tr>
-          <tr><td>ドッピオ</td><td>エスプレッソ2杯分（ダブルショット）。</td></tr>
-          <tr><td>リストレット</td><td>エスプレッソの半量。濃縮され甘みが強い。</td></tr>
-          <tr><td>ルンゴ</td><td>エスプレッソを長めに抽出。量は多いが苦味も出る。</td></tr>
-          <tr><td>アメリカーノ</td><td>エスプレッソにお湯を加えたすっきりした味わい。</td></tr>
-          <tr><td>カフェラテ</td><td>エスプレッソ＋スチームミルク。ミルク多めでまろやか。</td></tr>
-          <tr><td>カプチーノ</td><td>エスプレッソ＋スチームミルク＋フォームミルク。泡が厚い。</td></tr>
-          <tr><td>マキアート</td><td>エスプレッソに少量のフォームミルクをのせたもの。</td></tr>
-          <tr><td>カフェモカ</td><td>エスプレッソ＋チョコ＋ミルク。甘くデザート感覚。</td></tr>
-          <tr><td>フラットホワイト</td><td>エスプレッソ＋きめ細かいミルク。ラテより濃厚。</td></tr>
-          <tr><td>コルタード</td><td>エスプレッソとスチームミルクを1:1。濃厚だけど柔らかい。</td></tr>
-          <tr><td>コンパナ</td><td>エスプレッソにホイップクリームをのせた飲み方。</td></tr>
-          <tr><td>アフォガート</td><td>バニラアイスにエスプレッソをかけたデザート。</td></tr>
-          <tr><td>アイリッシュコーヒー</td><td>コーヒー＋アイリッシュウイスキー＋砂糖＋生クリーム。</td></tr>
-          <tr><td>ウィンナーコーヒー</td><td>コーヒーにホイップクリームを浮かべた飲み方。</td></tr>
-          <tr><td>トルココーヒー</td><td>粉ごと煮出す伝統的な抽出。濃厚で独特。</td></tr>
-          <tr><td>ギリシャコーヒー</td><td>トルココーヒーとほぼ同じ製法のギリシャ版。</td></tr>
-          <tr><td>フレンチプレス</td><td>金属フィルターで抽出。オイル分が残りコクが強い。</td></tr>
-          <tr><td>ハンドドリップ</td><td>ペーパーフィルターで抽出。クリーンで軽やか。</td></tr>
-          <tr><td>サイフォン</td><td>蒸気圧を利用した抽出。丸みのある味わい。</td></tr>
-          <tr><td>コールドブリュー</td><td>水で長時間抽出。すっきり爽やか。</td></tr>
-          <tr><td>ニトロコールドブリュー</td><td>コールドブリューに窒素ガスを注入。クリーミーな口当たり。</td></tr>
-        </tbody>
-      </table>
-    </div>
+      <!-- タブの中身 -->
+      <div class="tab-content mt-3" id="coffeeTabContent">
 
-    <!-- 産地別 -->
-    <div class="tab-pane fade" id="origin" role="tabpanel">
-      <h2>3. コーヒー産地別の特徴</h2>
-      <table class="table table-bordered" style="background-color: #b28c7b;">
-        <thead>
-          <tr>
-            <th class="text-white fw-bold">国・地域</th>
-            <th class="text-white fw-bold">特徴</th>
-          </tr>
-        </thead>
-        <tbody class="text-white">
-          <tr><td>ブラジル</td><td>ナッツやチョコのような甘み。世界最大の生産国。</td></tr>
-          <tr><td>コロンビア</td><td>酸味と甘みのバランスが良くマイルド。</td></tr>
-          <tr><td>エチオピア</td><td>花や果実の香り。コーヒー発祥の地。</td></tr>
-          <tr><td>ケニア</td><td>ベリー系の酸味が強く力強い風味。</td></tr>
-          <tr><td>グアテマラ</td><td>スパイシーさと華やかな酸味。</td></tr>
-          <tr><td>コスタリカ</td><td>クリーンで明るい酸味と甘さ。</td></tr>
-          <tr><td>ホンジュラス</td><td>甘みと香ばしさ。中米で注目の産地。</td></tr>
-          <tr><td>エルサルバドル</td><td>なめらかな口当たりとチョコっぽい甘み。</td></tr>
-          <tr><td>ニカラグア</td><td>ナッツ系、柔らかな酸味。</td></tr>
-          <tr><td>パナマ</td><td>高品質で有名。ゲイシャ種は花の香りと華やかさ。</td></tr>
-          <tr><td>ペルー</td><td>マイルドでクリーン。オーガニック栽培も多い。</td></tr>
-          <tr><td>メキシコ</td><td>軽やかな酸味で飲みやすい。</td></tr>
-          <tr><td>エクアドル</td><td>フルーティで香り高い。</td></tr>
-          <tr><td>ボリビア</td><td>甘みと酸味が柔らかい。</td></tr>
-          <tr><td>ベネズエラ</td><td>ナッツ感とバランスの良さ。</td></tr>
-          <tr><td>ジャマイカ</td><td>ブルーマウンテンが有名。上品でバランス良い。</td></tr>
-          <tr><td>ドミニカ共和国</td><td>柑橘系の酸味と軽やかさ。</td></tr>
-          <tr><td>キューバ</td><td>まろやかでコクがあり、苦味が柔らかい。</td></tr>
-          <tr><td>プエルトリコ</td><td>バランスの取れた味わい。</td></tr>
-          <tr><td>インドネシア</td><td>アーシーで重厚な苦味。スマトラ・ジャワが有名。</td></tr>
-          <tr><td>ベトナム</td><td>主にロブスタ種。濃厚で苦味が強い。</td></tr>
-          <tr><td>タイ</td><td>香ばしく甘みもある。新興産地。</td></tr>
-          <tr><td>ラオス</td><td>スパイシーでしっかりした味わい。</td></tr>
-          <tr><td>インド</td><td>モンスーンコーヒーが有名。独特の風味。</td></tr>
-          <tr><td>イエメン</td><td>ワインのように複雑で個性的。モカ港由来の「モカコーヒー」。</td></tr>
-          <tr><td>タンザニア</td><td>キリマンジャロが有名。明るい酸味とコク。</td></tr>
-          <tr><td>ルワンダ</td><td>ベリー系の酸味。華やかでクリーン。</td></tr>
-          <tr><td>ブルンジ</td><td>明るい酸味と甘み。クリーンカップ。</td></tr>
-          <tr><td>ウガンダ</td><td>ロブスタ種中心。力強く個性的。</td></tr>
-          <tr><td>カメルーン</td><td>チョコやスパイス感。</td></tr>
-          <tr><td>コンゴ</td><td>コクがあり濃厚。</td></tr>
-          <tr><td>パプアニューギニア</td><td>甘みとコクのバランス。華やかさも。</td></tr>
-        </tbody>
-      </table>
-    </div>
 
-    <!-- 焙煎度 -->
-    <div class="tab-pane fade" id="roast" role="tabpanel">
-      <h2>4. コーヒーの焙煎度</h2>
-      <table class="table table-bordered" style="background-color: #b28c7b;">
-        <thead>
-          <tr>
-            <th class="text-white fw-bold">焙煎度</th>
-            <th class="text-white fw-bold">特徴</th>
-          </tr>
-        </thead>
-        <tbody class="text-white">
-          <tr><td>ライトロースト</td><td>酸味が強くフルーティ。豆の個性が出やすい。</td></tr>
-          <tr><td>シナモンロースト</td><td>ライトよりやや深め。酸味と甘みのバランス。</td></tr>
-          <tr><td>ミディアムロースト</td><td>バランスが良く飲みやすい。ナッツやチョコ系の香り。</td></tr>
-          <tr><td>ハイロースト</td><td>やや苦味が出てコクが増す。香ばしさが特徴。</td></tr>
-          <tr><td>フルシティロースト</td><td>苦味とコクが強く、チョコやカラメル感。</td></tr>
-          <tr><td>フレンチロースト</td><td>深煎りで苦味が強く、スモーキーな香り。</td></tr>
-          <tr><td>イタリアンロースト</td><td>非常に深煎り。ほぼ黒く、強い苦味。</td></tr>
-          </tbody>
-        </table>
+        <!-- 基礎知識 -->
+        <div class="tab-pane fade show active" id="basic" role="tabpanel">
+          <h4>1. コーヒーの基礎知識</h4>
+          <p>
+            コーヒーは「コーヒーノキ」という木になるコーヒーチェリーの種から作られます。<br>
+            赤い果実の中にある種を取り出して乾燥・精製したものが「コーヒー豆」です。<br>
+            主な品種は以下の通りです。
+          </p>
+          <table class="table table-bordered" style="background-color: #b28c7b;">
+            <thead>
+              <tr>
+                <th class="text-white fw-bold">品種</th>
+                <th class="text-white fw-bold">特徴</th>
+              </tr>
+            </thead>
+            <tbody class="text-white">
+              <tr>
+                <td>アラビカ種</td>
+                <td>香り高く、酸味や甘みが豊か。全世界流通の約7割。</td>
+              </tr>
+              <tr>
+                <td>ロブスタ種</td>
+                <td>苦味が強くカフェインも多い。病害虫に強く安価。</td>
+              </tr>
+              <tr>
+                <td>リベリカ種</td>
+                <td>独特の香りを持つが生産量は少ない。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 種類 -->
+        <div class="tab-pane fade" id="types" role="tabpanel">
+          <h4>2. コーヒーの種類</h4>
+          <table class="table table-bordered" style="background-color: #b28c7b;">
+            <thead>
+              <tr>
+                <th class="text-white fw-bold">種類</th>
+                <th class="text-white fw-bold">特徴</th>
+              </tr>
+            </thead>
+            <tbody class="text-white">
+              <tr><td>エスプレッソ</td><td>高圧で抽出する30ml前後の濃厚なコーヒー。</td></tr>
+              <tr><td>ドッピオ</td><td>エスプレッソ2杯分（ダブルショット）。</td></tr>
+              <tr><td>リストレット</td><td>エスプレッソの半量。濃縮され甘みが強い。</td></tr>
+              <tr><td>ルンゴ</td><td>エスプレッソを長めに抽出。量は多いが苦味も出る。</td></tr>
+              <tr><td>アメリカーノ</td><td>エスプレッソにお湯を加えたすっきりした味わい。</td></tr>
+              <tr><td>カフェラテ</td><td>エスプレッソ＋スチームミルク。ミルク多めでまろやか。</td></tr>
+              <tr><td>カプチーノ</td><td>エスプレッソ＋スチームミルク＋フォームミルク。泡が厚い。</td></tr>
+              <tr><td>マキアート</td><td>エスプレッソに少量のフォームミルクをのせたもの。</td></tr>
+              <tr><td>カフェモカ</td><td>エスプレッソ＋チョコ＋ミルク。甘くデザート感覚。</td></tr>
+              <tr><td>フラットホワイト</td><td>エスプレッソ＋きめ細かいミルク。ラテより濃厚。</td></tr>
+              <tr><td>コルタード</td><td>エスプレッソとスチームミルクを1:1。濃厚だけど柔らかい。</td></tr>
+              <tr><td>コンパナ</td><td>エスプレッソにホイップクリームをのせた飲み方。</td></tr>
+              <tr><td>アフォガート</td><td>バニラアイスにエスプレッソをかけたデザート。</td></tr>
+              <tr><td>アイリッシュコーヒー</td><td>コーヒー＋アイリッシュウイスキー＋砂糖＋生クリーム。</td></tr>
+              <tr><td>ウィンナーコーヒー</td><td>コーヒーにホイップクリームを浮かべた飲み方。</td></tr>
+              <tr><td>トルココーヒー</td><td>粉ごと煮出す伝統的な抽出。濃厚で独特。</td></tr>
+              <tr><td>ギリシャコーヒー</td><td>トルココーヒーとほぼ同じ製法のギリシャ版。</td></tr>
+              <tr><td>フレンチプレス</td><td>金属フィルターで抽出。オイル分が残りコクが強い。</td></tr>
+              <tr><td>ハンドドリップ</td><td>ペーパーフィルターで抽出。クリーンで軽やか。</td></tr>
+              <tr><td>サイフォン</td><td>蒸気圧を利用した抽出。丸みのある味わい。</td></tr>
+              <tr><td>コールドブリュー</td><td>水で長時間抽出。すっきり爽やか。</td></tr>
+              <tr><td>ニトロコールドブリュー</td><td>コールドブリューに窒素ガスを注入。クリーミーな口当たり。</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 産地別 -->
+        <div class="tab-pane fade" id="origin" role="tabpanel">
+          <h4>3. コーヒー産地別の特徴</h4>
+          <table class="table table-bordered" style="background-color: #b28c7b;">
+            <thead>
+              <tr>
+                <th class="text-white fw-bold">国・地域</th>
+                <th class="text-white fw-bold">特徴</th>
+              </tr>
+            </thead>
+            <tbody class="text-white">
+              <tr><td>ブラジル</td><td>ナッツやチョコのような甘み。世界最大の生産国。</td></tr>
+              <tr><td>コロンビア</td><td>酸味と甘みのバランスが良くマイルド。</td></tr>
+              <tr><td>エチオピア</td><td>花や果実の香り。コーヒー発祥の地。</td></tr>
+              <tr><td>ケニア</td><td>ベリー系の酸味が強く力強い風味。</td></tr>
+              <tr><td>グアテマラ</td><td>スパイシーさと華やかな酸味。</td></tr>
+              <tr><td>コスタリカ</td><td>クリーンで明るい酸味と甘さ。</td></tr>
+              <tr><td>ホンジュラス</td><td>甘みと香ばしさ。中米で注目の産地。</td></tr>
+              <tr><td>エルサルバドル</td><td>なめらかな口当たりとチョコっぽい甘み。</td></tr>
+              <tr><td>ニカラグア</td><td>ナッツ系、柔らかな酸味。</td></tr>
+              <tr><td>パナマ</td><td>高品質で有名。ゲイシャ種は花の香りと華やかさ。</td></tr>
+              <tr><td>ペルー</td><td>マイルドでクリーン。オーガニック栽培も多い。</td></tr>
+              <tr><td>メキシコ</td><td>軽やかな酸味で飲みやすい。</td></tr>
+              <tr><td>エクアドル</td><td>フルーティで香り高い。</td></tr>
+              <tr><td>ボリビア</td><td>甘みと酸味が柔らかい。</td></tr>
+              <tr><td>ベネズエラ</td><td>ナッツ感とバランスの良さ。</td></tr>
+              <tr><td>ジャマイカ</td><td>ブルーマウンテンが有名。上品でバランス良い。</td></tr>
+              <tr><td>ドミニカ共和国</td><td>柑橘系の酸味と軽やかさ。</td></tr>
+              <tr><td>キューバ</td><td>まろやかでコクがあり、苦味が柔らかい。</td></tr>
+              <tr><td>プエルトリコ</td><td>バランスの取れた味わい。</td></tr>
+              <tr><td>インドネシア</td><td>アーシーで重厚な苦味。スマトラ・ジャワが有名。</td></tr>
+              <tr><td>ベトナム</td><td>主にロブスタ種。濃厚で苦味が強い。</td></tr>
+              <tr><td>タイ</td><td>香ばしく甘みもある。新興産地。</td></tr>
+              <tr><td>ラオス</td><td>スパイシーでしっかりした味わい。</td></tr>
+              <tr><td>インド</td><td>モンスーンコーヒーが有名。独特の風味。</td></tr>
+              <tr><td>イエメン</td><td>ワインのように複雑で個性的。モカ港由来の「モカコーヒー」。</td></tr>
+              <tr><td>タンザニア</td><td>キリマンジャロが有名。明るい酸味とコク。</td></tr>
+              <tr><td>ルワンダ</td><td>ベリー系の酸味。華やかでクリーン。</td></tr>
+              <tr><td>ブルンジ</td><td>明るい酸味と甘み。クリーンカップ。</td></tr>
+              <tr><td>ウガンダ</td><td>ロブスタ種中心。力強く個性的。</td></tr>
+              <tr><td>カメルーン</td><td>チョコやスパイス感。</td></tr>
+              <tr><td>コンゴ</td><td>コクがあり濃厚。</td></tr>
+              <tr><td>パプアニューギニア</td><td>甘みとコクのバランス。華やかさも。</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 焙煎度 -->
+        <div class="tab-pane fade" id="roast" role="tabpanel">
+          <h4>4. コーヒーの焙煎度</h4>
+          <table class="table table-bordered" style="background-color: #b28c7b;">
+            <thead>
+              <tr>
+                <th class="text-white fw-bold">焙煎度</th>
+                <th class="text-white fw-bold">特徴</th>
+              </tr>
+            </thead>
+            <tbody class="text-white">
+              <tr><td>ライトロースト</td><td>酸味が強くフルーティ。豆の個性が出やすい。</td></tr>
+              <tr><td>シナモンロースト</td><td>ライトよりやや深め。酸味と甘みのバランス。</td></tr>
+              <tr><td>ミディアムロースト</td><td>バランスが良く飲みやすい。ナッツやチョコ系の香り。</td></tr>
+              <tr><td>ハイロースト</td><td>やや苦味が出てコクが増す。香ばしさが特徴。</td></tr>
+              <tr><td>フルシティロースト</td><td>苦味とコクが強く、チョコやカラメル感。</td></tr>
+              <tr><td>フレンチロースト</td><td>深煎りで苦味が強く、スモーキーな香り。</td></tr>
+              <tr><td>イタリアンロースト</td><td>非常に深煎り。ほぼ黒く、強い苦味。</td></tr>
+              </tbody>
+            </table>
+          </div>
+      
+        <!-- 抽出方法 -->
+        <div class="tab-pane fade" id="brew" role="tabpanel">
+          <h4>5. コーヒーの抽出方法</h4>
+          <table class="table table-bordered" style="background-color: #b28c7b;">
+            <thead>
+              <tr>
+                <th class="text-white fw-bold">抽出方法</th>
+                <th class="text-white fw-bold">特徴</th>
+              </tr>
+            </thead>
+            <tbody class="text-white">
+              <tr><td>エスプレッソマシン</td><td>高圧で短時間抽出。濃厚で香り高い。</td></tr>
+              <tr><td>ハンドドリップ</td><td>ペーパーフィルターで抽出。クリーンで軽やか。</td></tr>
+              <tr><td>フレンチプレス</td><td>金属フィルターで抽出。オイル分が残りコクが強い。</td></tr>
+              <tr><td>サイフォン</td><td>蒸気圧を利用して抽出。丸みのある味わい。</td></tr>
+              <tr><td>コールドブリュー</td><td>水で長時間抽出。すっきり爽やか。</td></tr>
+              <tr><td>ニトロコールドブリュー</td><td>コールドブリューに窒素ガスを注入。クリーミーな口当たり。</td></tr>
+              <tr><td>トルコ式</td><td>粉ごと煮出す伝統的な方法。濃厚で個性的。</td></tr>
+              <tr><td>ギリシャ式</td><td>トルコ式に似た抽出方法。微粉が残る。</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-  
-    <!-- 抽出方法 -->
-    <div class="tab-pane fade" id="brew" role="tabpanel">
-      <h2>5. コーヒーの抽出方法</h2>
-      <table class="table table-bordered" style="background-color: #b28c7b;">
-        <thead>
-          <tr>
-            <th class="text-white fw-bold">抽出方法</th>
-            <th class="text-white fw-bold">特徴</th>
-          </tr>
-        </thead>
-        <tbody class="text-white">
-          <tr><td>エスプレッソマシン</td><td>高圧で短時間抽出。濃厚で香り高い。</td></tr>
-          <tr><td>ハンドドリップ</td><td>ペーパーフィルターで抽出。クリーンで軽やか。</td></tr>
-          <tr><td>フレンチプレス</td><td>金属フィルターで抽出。オイル分が残りコクが強い。</td></tr>
-          <tr><td>サイフォン</td><td>蒸気圧を利用して抽出。丸みのある味わい。</td></tr>
-          <tr><td>コールドブリュー</td><td>水で長時間抽出。すっきり爽やか。</td></tr>
-          <tr><td>ニトロコールドブリュー</td><td>コールドブリューに窒素ガスを注入。クリーミーな口当たり。</td></tr>
-          <tr><td>トルコ式</td><td>粉ごと煮出す伝統的な方法。濃厚で個性的。</td></tr>
-          <tr><td>ギリシャ式</td><td>トルコ式に似た抽出方法。微粉が残る。</td></tr>
-        </tbody>
-      </table>
     </div>
-  
   </div>
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
