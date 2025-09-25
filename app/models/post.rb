@@ -21,6 +21,14 @@ class Post < ApplicationRecord
     image
   end
 
+  def get_sq_image
+    unless image.attached?
+      file_path = Rails.root.join('app/asserts/images/no_image.jpg')
+      image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpg')
+    end
+    image.variant(gravity: :center, resize:"300x300^", crop:"300x300+0+0")
+  end
+
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
