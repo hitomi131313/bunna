@@ -16,7 +16,10 @@ class CommentsController < ApplicationController
   def destroy
     comment = Comment.find_by(id: params[:id], post_id: params[:post_id])
     if comment.present?
+      flash[:notice] = "コメントを削除しました"
       comment.destroy
+    else
+      flash[:alert] = "コメントが見つかりませんでした"
     end
     redirect_to request.referer
   end 

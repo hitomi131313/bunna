@@ -90,8 +90,13 @@ class UsersController < ApplicationController
 
   def destroy
     user = User.find(params[:id])
-    user.destroy
-    redirect_to new_user_registration_path
+    if user.present?
+      flash[:notice] = "ユーザを削除しました"
+      user.destroy
+    else
+      flash[:alert] = "ユーザが見つかりませんでした"
+    end
+      redirect_to new_user_registration_path
   end
 
 

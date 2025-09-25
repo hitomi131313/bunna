@@ -79,7 +79,12 @@ class PostsController < ApplicationController
 
   def destroy
     post = Post.find(params[:id])
-    post.destroy
+    if post.present?
+      flash[:notice] = "投稿を削除しました"
+      post.destroy
+    else
+      flash[:alert] = "投稿が見つかりませんでした"
+    end
     redirect_to mypage_path(current_user.id)
   end
 

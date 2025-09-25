@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :name,            presence: true, uniqueness: true
   validates :last_name,       presence: true
   validates :first_name,      presence: true
-  validates :last_name,       presence: true
+  validates :last_name_kana,  presence: true
   validates :first_name_kana, presence: true
   
   has_one_attached :profile_image

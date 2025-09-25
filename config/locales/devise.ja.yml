@@ -10,6 +10,7 @@ ja:
     failure:
       not_found_in_database: "ユーザーが登録されていません"
       unauthenticated: "ログインされていません"
+      invalid: "メールアドレスもしくはパスワードが無効です"
   errors:
     messages:
       already_confirmed: "はすでに登録済みです。ログインしてください。"
