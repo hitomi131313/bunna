@@ -1,0 +1,9 @@
+<div class="new-comment card-text">
+  <%= form_with  url: url, model: [post, comment], local: true do |f| %>
+    <div class="form-group mb-2">
+      <%= f.label :comment, "コメントする", class: "form-label" %>
+      <%= f.text_area :comment, rows: 2, placeholder: "コメントをここに", class: "form-control" %>
+    </div>
+    <%= f.submit "送信する", class: "btn btn-secondary btn-sm" %>
+  <% end %>
+</div>
