@@ -19,13 +19,13 @@
           <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
             <%= render "devise/shared/error_messages", resource: resource %>
     
-            <!-- username -->
+          <!-- username -->
             <div class="form-floating mb-3">
               <%= f.label :name, "ユーザーネーム", for: "floatingUsername" %>
               <%= f.text_field :name, class: "form-control", id: "floatingUsername", placeholder: "ユーザーネーム", autofocus: true, autocomplete: "username" %>
             </div>
     
-            <!-- name_kanji -->
+          <!-- name_kanji -->
             <div class="row mb-3">
               <div class="col-md-6 mb-3 mb-md-0">
                 <div class="form-floating">
@@ -41,7 +41,7 @@
               </div>
             </div>
     
-            <!-- name_kana -->
+          <!-- name_kana -->
             <div class="row mb-3">
               <div class="col-md-6 mb-3 mb-md-0">
                 <div class="form-floating">
@@ -57,13 +57,13 @@
               </div>
             </div>
     
-            <!-- email -->
+          <!-- email -->
             <div class="form-floating mb-3">
               <%= f.label :email, "メールアドレス", for: "floatingEmail" %>
               <%= f.email_field :email, class: "form-control", id: "floatingEmail", placeholder: "name@example.com", autofocus: true, autocomplete: "email" %>
             </div>
     
-            <!-- password -->
+          <!-- password -->
             <div class="form-floating mb-3">
               <%= f.label :password, "パスワード", for: "floatingPassword" %>
               <% if @minimum_password_length %>
@@ -72,7 +72,7 @@
               <%= f.password_field :password, class: "form-control", id: "floatingPassword", placeholder: "Password", autocomplete: "new-password" %>
             </div>
     
-            <!-- password_confirmation -->
+          <!-- password_confirmation -->
             <div class="form-floating mb-3">
               <%= f.label :password_confirmation, "パスワード（確認）", for: "floatingPasswordConfirmation" %>
               <%= f.password_field :password_confirmation, class: "form-control", id: "floatingPasswordConfirmation", placeholder: "Password", autocomplete: "new-password" %>
