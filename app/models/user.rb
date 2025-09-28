@@ -41,11 +41,11 @@ class User < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height])
   end
   
-  def get_profile_sq_image
+  def get_profile_square_image
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpg')
     end
-    profile_image.variant(gravity: :center, resize:"200x200^", crop:"200x200+0+0")
+    profile_image.variant(gravity: :center, resize:"400x400^", crop:"400x400+0+0")
   end
 end

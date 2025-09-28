@@ -21,12 +21,12 @@ class Post < ApplicationRecord
     image
   end
 
-  def get_sq_image
+  def get_square_image
     unless image.attached?
       file_path = Rails.root.join('app/asserts/images/no_image.jpg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpg')
     end
-    image.variant(gravity: :center, resize:"200x200^", crop:"200x200+0+0")
+    image.variant(gravity: :center, resize:"400x400^", crop:"400x400+0+0")
   end
 
   def favorited_by?(user)
