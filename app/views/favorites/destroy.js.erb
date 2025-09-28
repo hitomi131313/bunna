@@ -1,1 +1,1 @@
-document.getElementById("favorite-btn-<%= post.id %>").innerHTML = "<%= j(render 'favorites/button', post: @post) %>";
+document.getElementById("favorite-btn-<%= @post.id %>").innerHTML = "<%= j(render 'favorites/button', post: @post) %>";
