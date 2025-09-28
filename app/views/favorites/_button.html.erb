@@ -1,0 +1,11 @@
+<div id="favorite-btn-<%= post.id %>">
+  <% if current_user.favorites.exists?(post:post) %>
+    <%= link_to post_favorite_path(post), method: :delete, remote: true, class:"text-dark" do %>
+      ♥<%= post.favorites.count %>いいね
+    <% end %>
+  <% else %>
+    <%= link_to post_favorite_path(post), method: :post, remote: true, class:"text-dark" do %>
+      ♡<%= post.favorites.count %>いいね
+    <% end %>
+  <% end %>
+</div>

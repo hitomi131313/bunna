@@ -46,26 +46,18 @@
             <span><i class="fa-solid fa-calendar-days"></i> <%= @post.created_at.strftime('%Y/%m/%d %H:%M') %> ｜ </span>
 
             <!-- いいね -->
-            <% if @post.favorited_by?(current_user) %>
-              <span>
-                <%= link_to post_favorite_path(@post), class:"text-dark", method: :delete do %>
-                  ♥<%= @post.favorites.count %>いいね
-                <% end %>
-              </span>
-            <% else %>
-              <span>
-                <%= link_to post_favorite_path(@post), class:"text-dark", method: :post do %>
-                  ♡<%= @post.favorites.count %>いいね
-                <% end %>
-              </span>
-            <% end %>
+            <%= render 'favorites/button', post: @post %>
 
+
+            <!-- 投稿を編集 -->
             <br>
             <% if @post.user == current_user %>
               <%= link_to "投稿を編集", edit_post_path(@post.id), class:"btn btn-outline-secondary btn-sm mt-2" %>
             <% end %>
 
+
             <hr>
+
 
             <!-- コメント一覧 -->
             <%= render "comments/comment_index", post: @post %>
