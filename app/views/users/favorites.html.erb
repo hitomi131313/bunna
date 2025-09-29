@@ -1,0 +1,66 @@
+<div class="container" style="background-color: #e2d4cb;">
+  <div class='row'>
+    <div class='col-lg-3 p-3' style="background-color: #eee6e2;" >
+      <div class="card shadow-sm rounded-3" style="background-color: #d0b9af; color:#715412;">
+        <div class="card-body">
+          <h5 class="card-title mb-3 fw-bold">投稿検索</h5>
+          <%= render 'posts/search', url: mypage_favorites_path %>
+        </div>
+      </div>
+    </div>
+
+    <div class='col-lg-9'>
+      <div class='row text-center px-3 py-2 my-3 text-white fw-bold' style="background-color: #b28c7b;">
+        <div class="col-md-12">
+          <h3>いいねした投稿</h3>
+        </div>
+      </div>
+
+      <div class="row">
+      <% if @favorite_posts.any? %>
+        <% @favorite_posts.each do |post| %>
+          <div class="col-lg-4 col-md-6">
+            <div class="card mx-auto my-3 shadow-lg vh-50">
+              
+            <!-- 投稿画像 -->
+              <%= link_to post_path(post.id) do %>
+                <%= image_tag post.get_square_image, class: "card-img-top" %>
+              <% end %>
+
+            <!-- 本文部分 -->
+              <div class="card-body">
+                <div class="row align-items-center">
+                  
+                <!-- プロフィール画像 -->
+                  <div class="col-2 d-flex justify-content-center">
+                    <%= image_tag post.user.get_profile_image(50,50), class: "rounded-circle" %>
+                  </div>
+
+                <!-- ユーザー名とタイトル -->
+                  <div class="col-10">
+                    <div class="d-flex flex-column">
+                      <div>
+                        <span class="fw-bold">name:</span>
+                        <%= link_to user_path(post.user_id), class: "text-decoration-none" do %>
+                          <%= post.user.name %>
+                        <% end %>
+                      </div>
+                      <div class="text-truncate">
+                        <span class="fw-bold">title:</span>
+                        <%= post.title %>
+                      </div>
+                      <%= render 'favorites/button', post: post %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p>まだいいねした投稿はありません</p>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

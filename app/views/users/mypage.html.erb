@@ -14,13 +14,17 @@
         <div class="col-md-12">
           <div class="d-flex justify-content-between align-items-center">
             <h3><%= @user.name %></h3>
-            <%= link_to "プロフィール編集", edit_user_path(@user.id), class: "text-white" %>
+
+            <div class="d-flex ms-auto">
+              <%= link_to "プロフィール編集", edit_user_path(@user.id), class: "text-white" %>
+              <%= link_to "いいねした投稿", "/mypage/favorites", class: "text-white ml-3" %>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="row">
-      <% if @my_posts.any? %>
+        <% if @my_posts.any? %>
           <%= render 'posts/index', posts: @my_posts %>
         <% else %>
           <p>投稿は見つかりませんでした</p>

@@ -88,6 +88,11 @@ class UsersController < ApplicationController
     #@following_posts = Post.where(user_id: @user.following_ids).all
   end
 
+  def favorites
+    @favorite_posts = current_user.favorite_posts.includes(:user)
+  end
+
+
   def destroy
     user = User.find(params[:id])
     if user.present?
