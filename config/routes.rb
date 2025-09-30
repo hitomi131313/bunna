@@ -12,7 +12,11 @@ Rails.application.routes.draw do
 
   get 'mypage' => 'users#mypage', as:'mypage'
   get "mypage/favorites" => "users#favorites"
-  resources :users, only: [:index, :edit, :show, :update, :destroy]
+  resources :users, only: [:index, :edit, :show, :update, :destroy] do
+    resource :relationships, only: [:create, :destroy]
+    get 'followings' => 'users#followings'
+    get 'followers'  => 'users#followers'
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

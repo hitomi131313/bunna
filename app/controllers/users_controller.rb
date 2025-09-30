@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     end
   end
 
+
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.latest
@@ -43,9 +44,11 @@ class UsersController < ApplicationController
     end
   end
 
+
   def edit
     @user = User.find(params[:id])
   end
+
 
   def update
     @user = User.find(params[:id])
@@ -57,6 +60,7 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+
 
   def mypage
     @user = current_user
@@ -88,6 +92,7 @@ class UsersController < ApplicationController
     #@following_posts = Post.where(user_id: @user.following_ids).all
   end
 
+
   def favorites
     @favorite_posts = current_user.favorite_posts.includes(:user)
   end
@@ -104,6 +109,18 @@ class UsersController < ApplicationController
       redirect_to new_user_registration_path
   end
 
+
+  def followings
+    @user = User.find(params[:user_id])
+    @users = @user.followings
+  end
+
+  def followers
+    @user = User.find(params[:user_id])
+    @users = @user.followers
+  end
+
+  
 
 private
   def user_params

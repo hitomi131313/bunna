@@ -10,9 +10,25 @@
     </div>
 
     <div class='col-lg-9'>
-      <div class='row text-center px-3 py-2 my-3 text-white fw-bold' style="background-color: #b28c7b;">
+    <div class='row px-3 py-2 my-3 text-white fw-bold' style="background-color: #b28c7b;">
         <div class="col-md-12">
-          <h3><%= @user.name %></h3>
+          <div class="d-flex justify-content-between align-items-center">
+            <h3><%= @user.name %></h3>
+
+            <div class="d-flex ms-auto">
+              <div>
+                <%= link_to "#{@user.followings.count}フォロー",  user_followings_path(@user), class: "text-white" %>
+                <%= link_to "#{@user.followers.count}フォロワー", user_followers_path(@user), class: "text-white ml-3" %>
+              </div>
+              <% if current_user != @user %>
+                <% if current_user.following?(@user) %>
+                  <%= button_to "フォロー解除", user_relationships_path(@user), method: :delete, class: "ml-3" %>
+                <% else %>
+                  <%= button_to "フォローする", user_relationships_path(@user), method: :post, class: "ml-3" %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
 

@@ -16,7 +16,11 @@
             <h3><%= @user.name %></h3>
 
             <div class="d-flex ms-auto">
-              <%= link_to "プロフィール編集", edit_user_path(@user.id), class: "text-white" %>
+              <div>
+                <%= link_to "#{@user.followings.count}フォロー",  user_followings_path(@user), class: "text-white" %>
+                <%= link_to "#{@user.followers.count}フォロワー", user_followers_path(@user), class: "text-white ml-3" %>
+              </div>
+              <%= link_to "プロフィール編集", edit_user_path(@user.id), class: "text-white ml-3" %>
               <%= link_to "いいねした投稿", "/mypage/favorites", class: "text-white ml-3" %>
             </div>
           </div>
