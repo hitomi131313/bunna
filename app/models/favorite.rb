@@ -5,4 +5,5 @@ class Favorite < ApplicationRecord
 
   validates :user_id, uniqueness: {scope: :post_id}
 
+  scope :recent, -> {order("favorites.created_at DESC")}
 end

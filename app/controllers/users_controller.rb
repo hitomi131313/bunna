@@ -94,7 +94,31 @@ class UsersController < ApplicationController
 
 
   def favorites
-    @favorite_posts = current_user.favorite_posts.includes(:user)
+    @favorite_posts = favorite_posts.merge(Favorite.recent)
+    if params[:sort] == 'latest'
+      @favorite_posts = favorite_posts.latest
+    else params[:sort] == 'old'
+      @favorite_posts = favorite_posts.old
+    end
+
+    if params[:selected_genre].present? 
+      @favorite_posts = @favorite_posts.where(genre:params[:selected_genre])
+    end
+    if params[:selected_kind].present?
+      @favorite_posts = @favorite_posts.where(kind:params[:selected_kind])
+    end
+    if params[:selected_origin_country].present?
+      @favorite_posts = @favorite_posts.where(origin_country:params[:selected_origin_country])
+    end
+    if params[:selected_place].present?
+      @favorite_posts = @favorite_posts.where(place:params[:selected_place])
+    end
+
+    @post_keyword = params[:post_keyword]
+		@post_method = params[:post_method]
+    if params[:post_keyword].present?
+      @favorite_posts = @favorite_posts.merge(Post.post_search_for(@post_keyword, @post_method)).latest
+    end
   end
 
 
@@ -136,5 +160,36 @@ private
     else
     end
   end
+
+  def favorite_posts
+    current_user.favorite_posts.includes(:user)
+  end
+
+  # def search_post(posts)
+  #   if params[:sort] == 'latest'
+  #     posts = posts.latest
+  #   else params[:sort] == 'old'
+  #     posts = posts.old
+  #   end
+
+  #   if params[:selected_genre].present? 
+  #     posts = posts.where(genre:params[:selected_genre])
+  #   end
+  #   if params[:selected_kind].present?
+  #     posts = posts.where(kind:params[:selected_kind])
+  #   end
+  #   if params[:selected_origin_country].present?
+  #     posts = posts.where(origin_country:params[:selected_origin_country])
+  #   end
+  #   if params[:selected_place].present?
+  #     posts = posts.where(place:params[:selected_place])
+  #   end
+
+  #   @post_keyword = params[:post_keyword]
+  #   @post_method = params[:post_method]
+  #   if params[:post_keyword].present?
+  #     posts = posts.merge(Post.post_search_for(@post_keyword, @post_method)).latest
+  #   end
+  # end
 
 end
