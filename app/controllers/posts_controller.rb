@@ -11,7 +11,14 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      flash[:notice] = "投稿に成功しました"
+      case @post.status
+      when "published"
+        flash[:notice] = "投稿を公開しました"
+      when "draft"
+        flash[:notice] = "下書きとして保存しました"
+      when "unpublished"
+        flash[:notice] = "非公開として保存しました"
+      end
       redirect_to post_path(@post.id)
     else
       flash.now[:notice] = "投稿に失敗しました"
@@ -21,11 +28,11 @@ class PostsController < ApplicationController
 
   def index
     if params[:sort] == 'latest'
-      @posts = Post.latest
+      @posts = Post.published.latest
     elsif params[:sort] == 'old'
-      @posts = Post.old
+      @posts = Post.published.old
     else
-      @posts = Post.all.latest
+      @posts = Post.published.latest
     end
 
     if params[:selected_genre].present? 
@@ -49,7 +56,7 @@ class PostsController < ApplicationController
 
 
     unless @posts&.any?
-      @posts = Post.all.latest
+      @posts = Post.published.latest
     end
 
 
@@ -69,8 +76,15 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      flash[:notice] = "編集に成功しました"
-      redirect_to post_path
+      case @post.status
+      when "published"
+        flash[:notice] = "投稿を公開しました"
+        when "draft"
+        flash[:notice] = "下書きとして保存しました"
+        when "unpublished"
+        flash[:notice] = "非公開として保存しました"
+        end
+        redirect_to post_path
     else
       flash.now[:notice] = "編集に失敗しました"
       render :edit
@@ -94,7 +108,7 @@ class PostsController < ApplicationController
 
 private
   def post_params
-    params.require(:post).permit(:image, :title, :body, :genre, :kind, :origin_country, :place)
+    params.require(:post).permit(:image, :title, :body, :status, :genre, :kind, :origin_country, :place)
   end
 
   def is_matching_login_user

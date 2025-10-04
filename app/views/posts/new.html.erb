@@ -52,6 +52,13 @@
               <%= f.select :place, Post.places.keys.map { |k| [t("enums.post.place.#{k}"), k] }, { include_blank: "選択してください" }, { class: "form-select w-100" } %>
             </div>
 
+            <div class="mb-3">
+              <%= f.label :status, "公開設定", class: "form-label" %>
+              <%= f.radio_button :status, 'published' %>公開
+              <%= f.radio_button :status, 'draft' %>下書き
+              <%= f.radio_button :status, 'unpublished' %>非公開
+            </div>
+
             <div class="text-center">
               <%= f.submit '投稿', class: "btn btn-secondary w-100 my-3" %>
             </div>

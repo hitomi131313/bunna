@@ -57,6 +57,12 @@ class Post < ApplicationRecord
   #scope :place,          ->(s) { where(place: Post.places.keys & s) }
 
 
+  enum status: {
+    published:  0,
+    draft:      1,
+    unpublished:2
+  }
+
   enum genre: {
     blank:  0,
     coffee: 1,

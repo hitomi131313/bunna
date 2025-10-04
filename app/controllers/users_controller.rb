@@ -16,12 +16,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.latest
+    @posts = @user.posts.published.latest
 
     if params[:sort] == 'latest'
-      @posts = @posts.latest
+      @posts = @posts.published.latest
     else params[:sort] == 'old'
-      @posts = @posts.old
+      @posts = @posts.published.old
     end
 
     if params[:selected_genre].present? 

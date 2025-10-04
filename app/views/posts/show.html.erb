@@ -53,6 +53,7 @@
             <br>
             <% if @post.user == current_user %>
               <%= link_to "投稿を編集", edit_post_path(@post.id), class:"btn btn-outline-secondary btn-sm mt-2" %>
+              <p>公開状態： <%= @post.status_i18n %></p>
             <% end %>
 
 
