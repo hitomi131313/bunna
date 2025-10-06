@@ -1,3 +1,34 @@
+<style>
+  .nav-tabs .nav-item {
+    flex-shrink: 0;
+  }
+  
+  .nav-tabs .nav-link {
+    background-color: #f5f5f5;
+    color: #333;
+  }
+
+  .nav-tabs .nav-link:hover {
+    background-color: #ddd;
+    color: #000;
+  }
+
+  .nav-tabs .nav-link.active {
+    background-color: #715412;
+    color: #fff;
+    border-color: #8d6e63;
+  }
+
+  .tab-pane.active {
+  background-color: #eee6e2;
+  padding: 1.5rem;
+  border-radius: 8px;
+  
+}
+</style>
+
+
+
 <div class="container" style="background-color: #e2d4cb;">
   <div class='row'>
     <div class='col-lg-3 p-3' style="background-color: #eee6e2;" >
@@ -27,12 +58,63 @@
         </div>
       </div>
 
+
       <div class="row">
-        <% if @my_posts.any? %>
-          <%= render 'posts/index', posts: @my_posts %>
-        <% else %>
-          <p>投稿は見つかりませんでした</p>
-        <% end %>
+        <div class="col-12">
+         <!-- タブ -->
+          <ul class="nav nav-tabs" id="postTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="published-tab" data-bs-toggle="tab" data-bs-target="#published" type="button" role="tab">
+              <span class="tab-label"> 公開中</span></button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="draft-tab" data-bs-toggle="tab" data-bs-target="#draft" type="button" role="tab">
+              <span class="tab-label">下書き</span></button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="unpublished-tab" data-bs-toggle="tab" data-bs-target="#unpublished" type="button" role="tab">
+              <span class="tab-label">非公開</span></button>
+            </li>
+          </ul>
+
+
+          <!-- タブの中身 -->
+          <div class="tab-content mt-3" id="postTabContent">
+            <!-- 公開中 -->
+            <div class="tab-pane fade show active" id="published" role="tabpanel">
+              <% if @published_posts.any? %>
+                <div class="row">
+                  <%= render 'posts/index', posts: @published_posts %>
+                </div>
+              <% else %>
+                <p>投稿は見つかりませんでした</p>
+              <% end %>
+            </div>
+
+            <!-- 下書き -->
+            <div class="tab-pane fade" id="draft" role="tabpanel">
+              <% if @draft_posts.any? %>
+                <div class="row">
+                  <%= render 'posts/index', posts: @draft_posts %>
+                </div>
+              <% else %>
+                <p>投稿は見つかりませんでした</p>
+              <% end %>
+            </div>
+
+            <!-- 非公開 -->
+            <div class="tab-pane fade" id="unpublished" role="tabpanel">
+              <% if @unpublished_posts.any? %>
+                <div class="row">
+                  <%= render 'posts/index', posts: @unpublished_posts %>
+                </div>
+              <% else %>
+                <p>投稿は見つかりませんでした</p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
       </div>
     </div>
   </div>

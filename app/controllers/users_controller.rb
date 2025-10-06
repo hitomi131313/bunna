@@ -89,6 +89,10 @@ class UsersController < ApplicationController
     if params[:post_keyword].present?
       @my_posts = @my_posts.merge(Post.post_search_for(@post_keyword, @post_method)).latest
     end
+
+    @published_posts = @my_posts.published
+    @draft_posts = @my_posts.draft
+    @unpublished_posts = @my_posts.unpublished
     #@following_posts = Post.where(user_id: @user.following_ids).all
   end
 
