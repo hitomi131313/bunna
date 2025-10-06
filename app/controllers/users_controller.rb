@@ -97,6 +97,37 @@ class UsersController < ApplicationController
   end
 
 
+  def following_posts
+    following_ids = current_user.followings.pluck(:id)
+    @following_posts = Post.where(user_id: following_ids).published.latest
+
+    if params[:sort] == 'latest'
+      @following_posts = @following_posts.published.latest
+    else params[:sort] == 'old'
+      @following_posts = @following_posts.published.old
+    end
+
+    if params[:selected_genre].present? 
+      @following_posts = @following_posts.where(genre:params[:selected_genre])
+    end
+    if params[:selected_kind].present?
+      @following_posts = @following_posts.where(kind:params[:selected_kind])
+    end
+    if params[:selected_origin_country].present?
+      @following_posts = @following_posts.where(origin_country:params[:selected_origin_country])
+    end
+    if params[:selected_place].present?
+      @following_posts = @following_posts.where(place:params[:selected_place])
+    end
+
+    @post_keyword = params[:post_keyword]
+		@post_method = params[:post_method]
+    if params[:post_keyword].present?
+      @following_posts = @following_posts.merge(Post.post_search_for(@post_keyword, @post_method)).latest
+    end
+  end
+
+
   def favorites
     @favorite_posts = favorite_posts.merge(Favorite.recent)
     if params[:sort] == 'latest'

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   get 'mypage' => 'users#mypage', as:'mypage'
   get "mypage/favorites" => "users#favorites"
+  get 'users/following_posts' => 'users#following_posts'
   resources :users, only: [:index, :edit, :show, :update, :destroy] do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'users#followings'
