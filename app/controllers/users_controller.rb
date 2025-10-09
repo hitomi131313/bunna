@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user_keyword = params[:user_keyword]
 		@user_method = params[:user_method]
     if params[:user_keyword].present?
-      @users = User.user_search_for(@user_keyword, @user_method).latest
+      @users = User.user_search_for(@user_keyword, @user_method).latest.page(params[:page])
     else
       @users = User.none
     end
@@ -16,11 +16,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.published.latest
+    @posts = @user.posts.published.latest.page(params[:page])
 
     if params[:sort] == 'latest'
       @posts = @posts.published.latest
-    else params[:sort] == 'old'
+    elsif params[:sort] == 'old'
       @posts = @posts.published.old
     end
 
@@ -64,10 +64,10 @@ class UsersController < ApplicationController
 
   def mypage
     @user = current_user
-    @my_posts = @user.posts.latest
+    @my_posts = @user.posts.latest.page(params[:page])
     if params[:sort] == 'latest'
       @my_posts = @my_posts.latest
-    else params[:sort] == 'old'
+    elsif params[:sort] == 'old'
       @my_posts = @my_posts.old
     end
 
@@ -99,11 +99,11 @@ class UsersController < ApplicationController
 
   def following_posts
     following_ids = current_user.followings.pluck(:id)
-    @following_posts = Post.where(user_id: following_ids).published.latest
+    @following_posts = Post.where(user_id: following_ids).published.latest.page(params[:page])
 
     if params[:sort] == 'latest'
       @following_posts = @following_posts.published.latest
-    else params[:sort] == 'old'
+    elsif params[:sort] == 'old'
       @following_posts = @following_posts.published.old
     end
 
@@ -129,11 +129,12 @@ class UsersController < ApplicationController
 
 
   def favorites
-    @favorite_posts = favorite_posts.merge(Favorite.recent)
+    @favorite_posts = favorite_posts.merge(Favorite.recent).page(params[:page])
+
     if params[:sort] == 'latest'
-      @favorite_posts = favorite_posts.latest
-    else params[:sort] == 'old'
-      @favorite_posts = favorite_posts.old
+      @favorite_posts = @favorite_posts.latest
+    elsif params[:sort] == 'old'
+      @favorite_posts = @favorite_posts.old
     end
 
     if params[:selected_genre].present? 
@@ -171,12 +172,12 @@ class UsersController < ApplicationController
 
   def followings
     @user = User.find(params[:user_id])
-    @users = @user.followings
+    @users = @user.followings.page(params[:page])
   end
 
   def followers
     @user = User.find(params[:user_id])
-    @users = @user.followers
+    @users = @user.followers.page(params[:page])
   end
 
   

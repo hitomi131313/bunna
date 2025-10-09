@@ -32,7 +32,7 @@ class PostsController < ApplicationController
     elsif params[:sort] == 'old'
       @posts = Post.published.old
     else
-      @posts = Post.published.latest
+      @posts = Post.published.latest.page(params[:page])
     end
 
     if params[:selected_genre].present? 
@@ -55,14 +55,12 @@ class PostsController < ApplicationController
     end
 
 
-    unless @posts&.any?
-      @posts = Post.published.latest
-    end
-
-
-    #@genre = params[:selected_genre]
+    #unless @posts&.any?
+      #@posts = Post.published.latest.page(params[:page])
+    #end
 
   end
+
 
   def show
     @post = Post.find(params[:id])
