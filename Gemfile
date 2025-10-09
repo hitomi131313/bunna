@@ -70,3 +70,4 @@ gem "net-pop"
 gem "net-imap"
 
 gem 'kaminari','~> 1.2.1'
+gem 'bootstrap5-kaminari-views', '~> 0.0.1'
