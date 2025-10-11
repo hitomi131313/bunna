@@ -69,7 +69,9 @@
         <p class='px-3'>まだいいねした投稿はありません</p>
       <% end %>
       </div>
-      <%= paginate @favorite_posts, theme: 'bootstrap-5' %>
+      <div class="d-flex justify-content-center py-3 mt-auto">
+        <%= paginate @favorite_posts, theme: 'bootstrap-5' %>
+      </div>
     </div>
   </div>
 </div>

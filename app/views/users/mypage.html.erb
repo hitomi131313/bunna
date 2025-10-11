@@ -83,9 +83,7 @@
             <!-- 公開中 -->
             <div class="tab-pane fade show active" id="published" role="tabpanel">
               <% if @published_posts.any? %>
-                <div class="row">
-                  <%= render 'posts/index', posts: @published_posts %>
-                </div>
+                <%= render 'posts/index', posts: @published_posts %>
               <% else %>
                 <p>投稿は見つかりませんでした</p>
               <% end %>
@@ -94,9 +92,7 @@
             <!-- 下書き -->
             <div class="tab-pane fade" id="draft" role="tabpanel">
               <% if @draft_posts.any? %>
-                <div class="row">
-                  <%= render 'posts/index', posts: @draft_posts %>
-                </div>
+                <%= render 'posts/index', posts: @draft_posts %>
               <% else %>
                 <p>投稿は見つかりませんでした</p>
               <% end %>
@@ -105,9 +101,7 @@
             <!-- 非公開 -->
             <div class="tab-pane fade" id="unpublished" role="tabpanel">
               <% if @unpublished_posts.any? %>
-                <div class="row">
-                  <%= render 'posts/index', posts: @unpublished_posts %>
-                </div>
+                <%= render 'posts/index', posts: @unpublished_posts %>
               <% else %>
                 <p>投稿は見つかりませんでした</p>
               <% end %>

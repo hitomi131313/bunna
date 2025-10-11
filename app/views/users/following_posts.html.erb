@@ -24,13 +24,12 @@
         </div>
       </div>
 
-      <div class="row">
-        <% if @following_posts.any? %>
-          <%= render 'posts/index', posts: @following_posts %>
-        <% else %>
-          <p class='px-3'>投稿は見つかりませんでした</p>
-        <% end %>
-      </div>
+
+      <% if @following_posts.any? %>
+        <%= render 'posts/index', posts: @following_posts %>
+      <% else %>
+        <p class='px-3'>投稿は見つかりませんでした</p>
+      <% end %>
     </div>
   </div>
 </div>

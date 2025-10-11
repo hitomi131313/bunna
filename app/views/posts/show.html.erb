@@ -43,7 +43,7 @@
               </tr>
             </table>
 
-            <span><i class="fa-solid fa-calendar-days"></i> <%= @post.created_at.strftime('%Y/%m/%d %H:%M') %> ｜ </span>
+            <span><i class="fa-solid fa-calendar-days"></i> <%= @post.created_at.strftime('%Y/%m/%d %H:%M') %></span>
 
             <!-- いいね -->
             <%= render 'favorites/button', post: @post %>

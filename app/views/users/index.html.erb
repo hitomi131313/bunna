@@ -46,6 +46,8 @@
         <p class='px-3'>該当のユーザは見つかりませんでした</p>
       <% end %>
     </div>
-    <%= paginate @users, theme: 'bootstrap-5' %>
+    <div class="d-flex justify-content-center py-3 mt-auto">
+      <%= paginate @users, theme: 'bootstrap-5'%>
+    </div>
   </div>
 </div>

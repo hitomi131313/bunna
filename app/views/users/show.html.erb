@@ -32,13 +32,12 @@
         </div>
       </div>
 
-      <div class="row">
-        <% if @posts.any? %>
-          <%= render 'posts/index', posts: @posts %>
-        <% else %>
-          <p class='px-3'>投稿は見つかりませんでした</p>
-        <% end %>
-      </div>
+
+      <% if @posts.any? %>
+        <%= render 'posts/index', posts: @posts %>
+      <% else %>
+        <p class='px-3'>投稿は見つかりませんでした</p>
+      <% end %>
     </div>
   </div>
 </div>
