@@ -172,28 +172,24 @@ class UsersController < ApplicationController
 
   def followings
     @user = User.find(params[:user_id])
-    @users = @user.followings.page(params[:page])
+    @users = @user.followings.includes(:active_relationships).order("relationships.created_at DESC").page(params[:page])
 
     @user_keyword = params[:user_keyword]
 		@user_method = params[:user_method]
     if params[:user_keyword].present?
       @users = @users.user_search_for(@user_keyword, @user_method).latest.page(params[:page])
-    else
-      @users
     end
   end
 
   
   def followers
     @user = User.find(params[:user_id])
-    @users = @user.followers.page(params[:page])
+    @users = @user.followers.includes(:passive_relationships).order("relationships.created_at DESC").page(params[:page])
 
     @user_keyword = params[:user_keyword]
 		@user_method = params[:user_method]
     if params[:user_keyword].present?
       @users = @users.user_search_for(@user_keyword, @user_method).latest.page(params[:page])
-    else
-      @users
     end
   end
 
