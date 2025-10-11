@@ -19,6 +19,7 @@ class User < ApplicationRecord
   has_many :favorites,      dependent: :destroy
   has_many :favorite_posts, through: :favorites, source: :post
 
+  
   #フォローしてる側
   has_many :active_relationships,  class_name: "Relationship", 
                                    foreign_key: "follower_id", 
@@ -32,6 +33,8 @@ class User < ApplicationRecord
                                    dependent: :destroy
   has_many :followers,  through: :passive_relationships, 
                         source: :follower
+
+
 
   #フォローメソッド
   #フォローする
@@ -51,6 +54,7 @@ class User < ApplicationRecord
   scope :latest, -> {order(created_at: :desc)}
   scope :old,    -> {order(created_at: :asc)}
 
+
   def self.user_search_for(user_keyword, user_method)
     if user_method == "perfect"
       where(name: user_keyword)
@@ -65,6 +69,7 @@ class User < ApplicationRecord
     end
   end
 
+
   def get_profile_image(width,height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -73,6 +78,7 @@ class User < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height])
   end
   
+
   def get_profile_square_image
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
