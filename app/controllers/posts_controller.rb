@@ -3,9 +3,11 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create ,:show]
   before_action :is_matching_login_user, only: [:edit, :update]
 
+
   def new
     @post = Post.new
   end
+
 
   def create
     @post = Post.new(post_params)
@@ -25,6 +27,7 @@ class PostsController < ApplicationController
       render :new
     end
   end
+
 
   def index
     if params[:sort] == 'latest'
@@ -67,9 +70,11 @@ class PostsController < ApplicationController
     @comment = Comment.new
   end
 
+
   def edit
     @post = Post.find(params[:id])
   end
+
 
   def update
     @post = Post.find(params[:id])
@@ -89,6 +94,7 @@ class PostsController < ApplicationController
     end
   end
 
+
   def destroy
     post = Post.find(params[:id])
     if post.present?
@@ -100,8 +106,7 @@ class PostsController < ApplicationController
     redirect_to mypage_path(current_user.id)
   end
 
-  #def timeline
-  #end
+
 
 
 private
@@ -109,6 +114,7 @@ private
     params.require(:post).permit(:image, :title, :body, :status, :genre, :kind, :origin_country, :place)
   end
 
+  
   def is_matching_login_user
     post = Post.find_by(id:params[:id])
     if !user_signed_in?
