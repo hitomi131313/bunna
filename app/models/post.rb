@@ -64,10 +64,9 @@ class Post < ApplicationRecord
   }
 
   enum genre: {
-    blank:  0,
-    coffee: 1,
-    cup:    2,
-    goods:  3
+    coffee: 0,
+    cup:    1,
+    goods:  2
   }, _prefix: true
 
   enum  kind:{

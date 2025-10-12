@@ -6,7 +6,6 @@ ja:
         draft:       下書き
         unpublished: 非公開
       genre:
-        blank : 未選択
         coffee: コーヒー
         cup   : コップ
         goods : コーヒーグッズ
