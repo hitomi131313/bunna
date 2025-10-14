@@ -58,11 +58,6 @@ class PostsController < ApplicationController
     end
 
     @posts = @posts.page(params[:page])
-
-    #unless @posts&.any?
-      #@posts = Post.published.latest.page(params[:page])
-    #end
-    
   end
 
 
@@ -110,20 +105,20 @@ class PostsController < ApplicationController
 
 
 
-private
-  def post_params
-    params.require(:post).permit(:image, :title, :body, :status, :genre, :kind, :origin_country, :place)
-  end
-
-  
-  def is_matching_login_user
-    post = Post.find_by(id:params[:id])
-    if !user_signed_in?
-      redirect_to new_user_session_path
-    elsif post.present? && post.user_id != current_user.id
-        redirect_to posts_path
-    else
+  private
+    def post_params
+      params.require(:post).permit(:image, :title, :body, :status, :genre, :kind, :origin_country, :place)
     end
-  end
+
+
+    def is_matching_login_user
+      post = Post.find_by(id:params[:id])
+      if !user_signed_in?
+        redirect_to new_user_session_path
+      elsif post.present? && post.user_id != current_user.id
+          redirect_to posts_path
+      else
+      end
+    end
 
 end

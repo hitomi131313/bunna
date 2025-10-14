@@ -93,7 +93,6 @@ class UsersController < ApplicationController
     @published_posts = @my_posts.published
     @draft_posts = @my_posts.draft
     @unpublished_posts = @my_posts.unpublished
-    #@following_posts = Post.where(user_id: @user.following_ids).all
   end
 
 
@@ -193,26 +192,27 @@ class UsersController < ApplicationController
     end
   end
 
-  
 
-private
-  def user_params
-    params.require(:user).permit(:profile_image, :name, :last_name, :first_name, :last_name_kana, :first_name_kana, :email, :passward)
-  end
 
-  def is_matching_login_user
-    user = User.find_by(id: params[:id])
-    if !user_signed_in?
-      redirect_to new_user_session_path
-    elsif user.present? && user.id != current_user.id
-        redirect_to posts_path
-    else
+  private
+    def user_params
+      params.require(:user).permit(:profile_image, :name, :last_name, :first_name, :last_name_kana, :first_name_kana, :email, :passward)
     end
-  end
 
-  def favorite_posts
-    current_user.favorite_posts.includes(:user)
-  end
+    def is_matching_login_user
+      user = User.find_by(id: params[:id])
+      if !user_signed_in?
+        redirect_to new_user_session_path
+      elsif user.present? && user.id != current_user.id
+          redirect_to posts_path
+      else
+      end
+    end
+
+
+    def favorite_posts
+      current_user.favorite_posts.includes(:user)
+    end
 
   # def search_post(posts)
   #   if params[:sort] == 'latest'
@@ -240,5 +240,4 @@ private
   #     posts = posts.merge(Post.post_search_for(@post_keyword, @post_method)).latest
   #   end
   # end
-
 end
