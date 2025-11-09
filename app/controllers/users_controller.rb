@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   before_action :authenticate_user!, only: [:show]
   before_action :is_matching_login_user, only: [:edit, :update]
+  before_action :ensure_guest_user, only: [:edit]
 
   def index
     @user_keyword = params[:user_keyword]
@@ -213,6 +214,14 @@ class UsersController < ApplicationController
     def favorite_posts
       current_user.favorite_posts.includes(:user)
     end
+
+
+    def ensure_guest_user
+      @user = User.find(params[:id])
+      if @user.guest_user?
+        redirect_to user_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+      end
+    end  
 
   # def search_post(posts)
   #   if params[:sort] == 'latest'

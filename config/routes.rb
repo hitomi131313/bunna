@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  devise_for :admins, path: 'admin', controllers: {
+    sessions: 'admin/admins/sessions'
+  }
+
+  namespace :admin do
+    root 'users#index'
+    resources :users, only: [:index, :show, :destroy]
+    resources :comments, only: [:index, :destroy]
+  end
+
   devise_for :users
 
   get 'about' => 'homes#about', as:'about'
@@ -17,6 +27,10 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'users#followings'
     get 'followers'  => 'users#followers'
+  end
+
+  devise_scope :user do
+    post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
