@@ -1,2 +1,45 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<style>
+@media (min-width: 992px) {
+  .min-vh-lg-100 {
+    min-height: 100vh;
+  }
+}
+</style>
+
+<div class="min-vh-100" style="background-color: #e2d4cb;">
+  <div class='row text-center px-3 py-2 my-3 text-white fw-bold' style="background-color: #b28c7b;">
+    <div class="col-md-12">
+      <h3>ユーザ一覧</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <% if @users.any? %>
+      <% @users.each do |user| %>
+        <div class="col-lg-4 col-md-6">
+          <div class="card mx-auto my-3 shadow-lg vh-50">
+            <%= link_to admin_user_path(user.id) do %>
+              <%= image_tag user.get_profile_square_image, class: "card-img-top" %>
+            <% end %>
+            <div class="card-body text-center">
+              <h5 class="card-title">
+                <%= link_to admin_user_path(user.id), class: "text-decoration-none text-dark fw-bold" do %>
+                  <%= user.name %>
+                <% end %>
+              </h5>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="col-12">
+        <p class='px-3'>ユーザは見つかりませんでした</p>
+      </div>
+    <% end %>
+  </div>
+  <div class="py-3 pagination_wrapper">
+    <%= paginate @users, theme: 'bootstrap-5' %>
+  </div>
+</div>
+
+

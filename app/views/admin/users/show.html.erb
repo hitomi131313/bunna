@@ -1,2 +1,24 @@
 <h1>Admin::Users#show</h1>
 <p>Find me in app/views/admin/users/show.html.erb</p>
+
+<div class="row">
+  <div class="col-md-4">
+    <table class="table">
+      <tbody>
+        <tr>
+          <th width="30%">id</th>
+          <td><%= @user.id %></td>
+        </tr>
+        <tr>
+          <th>name</th>
+          <td><%= @user.name %></td>
+        </tr>
+      </tbody>
+    </table>
+    <%= link_to "destroy", admin_user_path(@user), data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger" %>
+  </div>
+  <div class="col-md-8">
+    <h2>comments</h2>
+    <%= render 'admin/comments/comments', comments: @user.comments %>
+  </div>
+</div>

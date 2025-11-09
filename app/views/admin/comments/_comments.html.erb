@@ -1,0 +1,22 @@
+<% if comments.any? %>
+  <table class="table table-bordered">
+    <tr>
+      <th>id</th>
+      <th width="50%">comment</th>
+      <th>created_at</th>
+      <th>comment_user</th>
+      <th></th>
+    </tr>
+    <% comments.each do |comment| %>
+      <tr>
+        <td><%= comment.id %></td>
+        <td></td>
+        <td><%= l comment.created_at, format: :long %></td>
+        <td><%= link_to comment.user.name, admin_user_path(comment.user) %></td>
+        <td><%= link_to "destroy", admin_comment_path(comment), method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <h3 class="text-center">No Data</h3>
+<% end %>

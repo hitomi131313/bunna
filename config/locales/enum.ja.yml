@@ -1,0 +1,74 @@
+ja:
+  enums:
+    post:
+      status:
+        published:   公開
+        draft:       下書き
+        unpublished: 非公開
+      genre:
+        coffee: コーヒー
+        cup   : コップ
+        goods : コーヒーグッズ
+      kind:
+        unknown:         不明
+        espresso:        エスプレッソ
+        doppio:          ドッピオ
+        ristretto:       リストレット
+        lungo:           ルンゴ
+        americano:       アメリカーノ
+        latte:           カフェラテ
+        cappuccino:      カプチーノ
+        macchiato:       マキアート
+        mocha:           カフェモカ
+        flat_white:      フラットホワイト
+        cortado:         コルタード
+        con_panna:       コンパナ
+        affogato:        アフォガート
+        irish_coffee:    アイリッシュコーヒー
+        vienna_coffee:   ウィンナーコーヒー
+        turkish_coffee:  トルココーヒー
+        greek_coffee:    ギリシャコーヒー
+        french_press:    フレンチプレス
+        pour_over:       ハンドドリップ
+        siphon:          サイフォン
+        cold_brew:       コールドブリュー
+        nitro_cold_brew: ニトロコールドブリュー
+      origin_country:
+        unknown:            不明
+        brazil:             ブラジル
+        colombia:           コロンビア
+        ethiopia:           エチオピア
+        kenya:              ケニア
+        guatemala:          グアテマラ
+        costa_rica:         コスタリカ
+        honduras:           ホンジュラス
+        el_salvador:        エルサルバドル
+        nicaragua:          ニカラグア
+        panama:             パナマ
+        peru:               ペルー
+        mexico:             メキシコ
+        ecuador:            エクアドル
+        bolivia:            ボリビア
+        venezuela:          ベネズエラ
+        jamaica:            ジャマイカ
+        dominican_republic: ドミニカ共和国
+        cuba:               キューバ
+        puerto_rico:        プエルトリコ
+        indonesia:          インドネシア
+        vietnam:            ベトナム
+        thailand:           タイ
+        laos:               ラオス
+        india:              インド
+        yemen:              イエメン
+        tanzania:           タンザニア
+        rwanda:             ルワンダ
+        burundi:            ブルンジ
+        uganda:             ウガンダ
+        cameroon:           カメルーン
+        congo:              コンゴ
+        papua_new_guinea:   パプアニューギニア
+      place:
+        blank: 未選択
+        cafe:  カフェ・喫茶店
+        house: 家
+        other: その他

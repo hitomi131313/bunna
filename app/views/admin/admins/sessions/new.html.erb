@@ -1,26 +1,40 @@
-<h2>Admin Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<div class="container" style="background-color: #e2d4ce;">
+  <div class="row">
+    <div class="col">
+      <div class= "vh-100 d-flex justify-content-center align-items-center">
+        <div class="card shadow-sm" style="width: 400px;">
+          <div class="card-body">
+            <h2 class="text-center mb-4">管理者ログイン</h2>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+            <%= form_with model: @admin, url: session_path(resource_name), local: true do |f| %>
+              <div class="form-floating mb-3">
+                <%= f.label :email,"メールアドレス", for: "floatingEmail" %><br />
+                <%= f.email_field :email, class: "form-control", id: "floatingEmail", placeholder: "name@example.com", autofocus: true, autocomplete: "email" %>
+              </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+              <div class="form-floating mb-3">
+                <%= f.label :password,"パスワード", for: "floatingPassword" %><br />
+                <%= f.password_field :password, class: "form-control", id: "floatingPassword", placeholder: "Password", autocomplete: "current-password" %>
+              </div>
+
+              <% if devise_mapping.rememberable? %>
+                <div class="field">
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :remember_me, "パスワードを保存" %>
+                </div>
+              <% end %>
+
+              <%= f.submit "ログイン", class: "btn btn-secondary w-100" %>
+            <% end %>
+
+            <div class="text-center mt-3">
+              <%= render "admin/admins/shared/links" %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
+</div>
 
-<%= render "admin/admins/shared/links" %>
