@@ -1,5 +1,5 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<h1 class = "m-4">Admin::Users#show</h1>
+
 
 <div class="row">
   <div class="col-md-4">
@@ -9,9 +9,35 @@
           <th width="30%">id</th>
           <td><%= @user.id %></td>
         </tr>
+
         <tr>
           <th>name</th>
           <td><%= @user.name %></td>
+        </tr>
+
+        <tr>
+          <th>last name</th>
+          <td><%= @user.last_name %></td>
+        </tr>
+
+        <tr>
+          <th>last name kana</th>
+          <td><%= @user.last_name_kana %></td>
+        </tr>
+
+        <tr>
+          <th>first name</th>
+          <td><%= @user.first_name %></td>
+        </tr>
+
+        <tr>
+          <th>first name kana</th>
+          <td><%= @user.first_name_kana %></td>
+        </tr>
+
+        <tr>
+          <th>email</th>
+          <td><%= @user.email %></td>
         </tr>
       </tbody>
     </table>

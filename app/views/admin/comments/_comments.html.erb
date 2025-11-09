@@ -10,7 +10,7 @@
     <% comments.each do |comment| %>
       <tr>
         <td><%= comment.id %></td>
-        <td></td>
+        <td><%= comment.comment %></td>
         <td><%= l comment.created_at, format: :long %></td>
         <td><%= link_to comment.user.name, admin_user_path(comment.user) %></td>
         <td><%= link_to "destroy", admin_comment_path(comment), method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
