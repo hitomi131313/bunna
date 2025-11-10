@@ -3,7 +3,7 @@ class Admin::CommentsController < ApplicationController
   layout 'admin'
   
   def index
-    @comments = Comment.all
+    @comments = Comment.all.page(params[:page])
   end
 
   def destroy
