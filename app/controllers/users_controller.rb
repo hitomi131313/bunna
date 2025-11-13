@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     if params[:user_keyword].present?
       @users = User.user_search_for(@user_keyword, @user_method).latest.page(params[:page])
     else
-      @users = User.none
+      redirect_to root_path
     end
   end
 

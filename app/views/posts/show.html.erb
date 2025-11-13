@@ -23,23 +23,28 @@
             <table class="table table-sm table-borderless w-auto">
               <tr>
                 <td class="fw-bold">title</td>
-                <td>: <%= @post.title %></td>
+                <td>:</td>
+                <td><%= @post.title %></td>
               </tr>
               <tr>
                 <td class="fw-bold">本文</td>
-                <td>: <%= @post.body %></td>
+                <td>:</td>
+                <td><%= raw(h(@post.body).gsub(/\n/, "<br>")) %></td>
               </tr>
               <tr>
                 <td class="fw-bold">種類</td>
-                <td>: <%= @post.kind_i18n %></td>
+                <td>:</td>
+                <td><%= @post.kind_i18n %></td>
               </tr>
               <tr>
                 <td class="fw-bold">産地国</td>
-                <td>: <%= @post.origin_country_i18n %></td>
+                <td>:</td> 
+                <td><%= @post.origin_country_i18n %></td>
               </tr>
               <tr>
                 <td class="fw-bold">場所</td>
-                <td>: <%= @post.place_i18n %></td>
+                <td>:</td> 
+                <td><%= @post.place_i18n %></td>
               </tr>
             </table>
 
