@@ -63,6 +63,10 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    unless @post.published? || current_user == @post.user
+      redirect_to root_path, alert: "この投稿にはアクセスできません"
+    end
+
     @comment = Comment.new
   end
 
