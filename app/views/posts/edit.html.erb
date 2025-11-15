@@ -49,10 +49,15 @@
 
             <div class="mb-3">
               <%= f.label :status, "公開設定", class: "form-label" %>
-              <%= f.radio_button :status, 'published' %>公開
-              <%= f.radio_button :status, 'draft' %>下書き
-              <%= f.radio_button :status, 'unpublished' %>非公開
-            </div>
+                <%= f.radio_button :status, 'published' %>
+                <%= f.label :status_published, '公開' %>
+
+                <%= f.radio_button :status, 'draft' %>
+                <%= f.label :status_draft, '下書き' %>
+
+                <%= f.radio_button :status, 'unpublished' %>
+                <%= f.label :status_unpublished, '非公開' %>
+             </div>
 
 
             <div class="text-center">
