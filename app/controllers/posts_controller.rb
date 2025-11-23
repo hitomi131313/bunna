@@ -67,6 +67,8 @@ class PostsController < ApplicationController
       redirect_to root_path, alert: "この投稿にはアクセスできません"
     end
 
+    @image_url = "https://RESIZE_BUCKET_NAME.s3-ap-northeast-1.amazonaws.com/#{@post.image.key}-thumbnail.#{@post.image.content_type.split('/').pop}"
+
     @comment = Comment.new
   end
 
