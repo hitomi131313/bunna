@@ -6,7 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
+if Rails.env.development?
+  Admin.create!(email: "admin@example.com", password: "admin0")
+end
 
 #ユーザー
 ichigo = User.find_or_create_by!(email: "ichigo@example.com") do |user|
