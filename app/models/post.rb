@@ -21,8 +21,30 @@ class Post < ApplicationRecord
     image
   end
 
+  def get_square_image
+    unless image.attached?
+      file_path = Rails.root.join('app/asserts/images/no_image.jpg')
+      image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpg')
+    end
+    image.variant(gravity: :center, resize:"400x400^", crop:"400x400+0+0")
+  end
+
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
+  end
+
+  def self.post_search_for(post_keyword, post_method)
+    if post_method == "perfect"
+      where(title: post_keyword)
+    elsif post_method == "forward"
+      where("title LIKE ?","#{post_keyword}%")
+    elsif post_method == "backward"
+      where("title LIKE ?","%#{post_keyword}")
+    elsif post_method == "partial"
+      where("title LIKE ?","%#{post_keyword}%")
+    else
+      none
+    end
   end
 
 
@@ -35,11 +57,16 @@ class Post < ApplicationRecord
   #scope :place,          ->(s) { where(place: Post.places.keys & s) }
 
 
+  enum status: {
+    published:  0,
+    draft:      1,
+    unpublished:2
+  }
+
   enum genre: {
-    blank:  0,
-    coffee: 1,
-    cup:    2,
-    goods:  3
+    coffee: 0,
+    cup:    1,
+    goods:  2
   }, _prefix: true
 
   enum  kind:{

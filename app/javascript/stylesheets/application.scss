@@ -1,1 +1,6 @@
 @use '~bootstrap/scss/bootstrap';
+
+.pagination_wrapper > nav {
+  display: flex;
+  justify-content: center;
+} 

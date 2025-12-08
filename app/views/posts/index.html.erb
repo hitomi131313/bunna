@@ -1,9 +1,9 @@
-<div class="container d-flex justify-content-center" style="background-color: #e2d4cb;">
+<div class="container" style="background-color: #e2d4cb;">
   <div class='row'>
-    <div class='col-3 p-3' style="background-color: #eee6e2;" >
+    <div class='col-lg-3 p-3' style="background-color: #eee6e2;" >
       <div class="card shadow-sm rounded-3" style="background-color: #d0b9af; color:#715412;">
         <div class="card-body">
-          <h5 class="card-title mb-3 fw-bold">検索条件</h5>
+          <h5 class="card-title mb-3 fw-bold">投稿検索</h5>
           <%= render 'search', url: posts_path %>
         </div>
         <div class="card-body">
@@ -11,15 +11,22 @@
           <%= render 'keyword_search', url: posts_path %>
         </div>
       </div>
-    </div>
 
-    <div class='col-9'><div class='d-flex justify-content-between align-items-center px-3 py-2 my-3 text-white fw-bold' style="background-color: #b28c7b;">
-      <div>
-        <h3>投稿一覧</h3>
+      <div class="card shadow-sm rounded-3 mt-3" style="background-color: #d0b9af; color:#715412;">
+        <div class="card-body">
+          <h5 class="card-title mb-3 fw-bold">ユーザー検索</h5>
+          <%= render 'users/search', url: users_path %>
+        </div>
       </div>
     </div>
 
-    <div>
+    <div class='col-lg-9'>
+      <div class='row text-center px-3 py-2 my-3 text-white fw-bold' style="background-color: #b28c7b;">
+        <div class="col-md-12">
+          <h3>投稿一覧</h3>
+        </div>
+      </div>
+
       <%= render 'index', posts: @posts %>
     </div>
   </div>

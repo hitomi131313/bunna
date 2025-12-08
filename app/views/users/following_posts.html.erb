@@ -1,0 +1,36 @@
+<style>
+@media (min-width: 992px) {
+  .min-vh-lg-100 {
+    min-height: 100vh;
+  }
+}
+</style>
+
+<div class="container min-vh-100" style="background-color: #e2d4cb;">
+  <div class='row'>
+    <div class='col-lg-3 min-vh-lg-100 p-3' style="background-color: #eee6e2;" >
+      <div class="card shadow-sm rounded-3" style="background-color: #d0b9af; color:#715412;">
+        <div class="card-body">
+          <h5 class="card-title mb-3 fw-bold">投稿検索</h5>
+          <%= render 'posts/search', url: users_following_posts_path %>
+        </div>
+      </div>
+    </div>
+
+    <div class='col-lg-9'>
+      <div class='row text-center px-3 py-2 my-3 text-white fw-bold' style="background-color: #b28c7b;">
+        <div class="col-md-12">
+          <h3>フォロー中の人の投稿一覧</h3>
+        </div>
+      </div>
+
+
+      <% if @following_posts.any? %>
+        <%= render 'posts/index', posts: @following_posts %>
+      <% else %>
+        <p class='px-3'>投稿は見つかりませんでした</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+

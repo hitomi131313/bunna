@@ -1,70 +1,74 @@
-<div class="container vh-100 d-flex justify-content-center align-items-center" style="background-color: #e2d4ce;">
-  <div class="card w-75 shadow-sm" style="width: 450px;">
-    <div class="card-body">
+<div class="container-fluid" style="background-color: #e2d4ce; height: 100vh;">
+  <div class="row h-100">
+    <div class="col-12 d-flex justify-content-center align-items-center">
+      <div class="card shadow-sm" style="max-width: 600px; width: 100%;">
+        <div class="card-body">
 
-      <h2 class="text-center mb-4">プロフィール編集</h2>
+          <h2 class="text-center mb-4">プロフィール編集</h2>
 
-      <% if @user.errors.any? %>
-        <%= @user.errors.count %>件のエラーが発生しました
-        <ul>
-          <% @user.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
+          <% if @user.errors.any? %>
+            <%= @user.errors.count %>件のエラーが発生しました
+            <ul>
+              <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
           <% end %>
-        </ul>
-      <% end %>
 
-      <%= form_with model:@user, local: true do |f| %>
-        <div class="mb-3">
-          <%= f.label :profile_image, "プロフィール画像" %><br>
-          <%= f.file_field :profile_image, accept: "image/*" %>
-        </div>
-
-        <div class="form-floating mb-3">
-          <%= f.label :name, "ユーザーネーム", for: "floatingUsername" %>
-          <%= f.text_field :name, class: "form-control", id: "floatingUsername", placeholder: "ユーザーネーム", autofocus: true %>
-        </div>
-
-        <div class="row mb-3">
-          <div class="col">
-            <div class="form-floating">
-              <%= f.label :last_name, "姓（漢字）", for: "floatingLastName" %>
-              <%= f.text_field :last_name, class: "form-control", id: "floatingLastName", placeholder: "姓", autocomplete: "family-name" %>
+          <%= form_with model:@user, local: true do |f| %>
+            <div class="mb-3">
+              <%= f.label :profile_image, "プロフィール画像" %><br>
+              <%= f.file_field :profile_image, accept: "image/*" %>
             </div>
-          </div>
-          <div class="col">
-            <div class="form-floating">
-              <%= f.label :first_name, "名（漢字）", for: "floatingFirstName" %>
-              <%= f.text_field :first_name, class: "form-control", id: "floatingFirstName", placeholder: "名", autocomplete: "given-name" %> 
+
+            <div class="form-floating mb-3">
+              <%= f.label :name, "ユーザーネーム", for: "floatingUsername" %>
+              <%= f.text_field :name, class: "form-control", id: "floatingUsername", placeholder: "ユーザーネーム", autofocus: true %>
             </div>
-          </div>
-        </div>
 
-        <div class="row mb-3">
-          <div class="col">
-            <div class="form-floating">
-              <%= f.label :last_name_kana, "セイ（カタカナ）", for: "floatingLastNameKana" %>
-              <%= f.text_field :last_name_kana, class: "form-control", id: "floatingLastNameKana", placeholder: "セイ", autocomplete: "off" %>
+            <div class="row mb-3">
+              <div class="col-md-6 mb-3 mb-md-0">
+                <div class="form-floating">
+                  <%= f.label :last_name, "姓（漢字）", for: "floatingLastName" %>
+                  <%= f.text_field :last_name, class: "form-control", id: "floatingLastName", placeholder: "姓", autocomplete: "family-name" %>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <%= f.label :first_name, "名（漢字）", for: "floatingFirstName" %>
+                  <%= f.text_field :first_name, class: "form-control", id: "floatingFirstName", placeholder: "名", autocomplete: "given-name" %> 
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="col">
-            <div class="form-floating">
-              <%= f.label :first_name_kana, "メイ（カタカナ）", for: "floatingFirstNameKana" %>
-              <%= f.text_field :first_name_kana, class: "form-control", id: "floatingFirstNameKana", placeholder: "メイ", autocomplete: "off" %>
+
+            <div class="row mb-3">
+              <div class="col-md-6 mb-3 mb-md-0">
+                <div class="form-floating">
+                  <%= f.label :last_name_kana, "セイ（カタカナ）", for: "floatingLastNameKana" %>
+                  <%= f.text_field :last_name_kana, class: "form-control", id: "floatingLastNameKana", placeholder: "セイ", autocomplete: "off" %>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <%= f.label :first_name_kana, "メイ（カタカナ）", for: "floatingFirstNameKana" %>
+                  <%= f.text_field :first_name_kana, class: "form-control", id: "floatingFirstNameKana", placeholder: "メイ", autocomplete: "off" %>
+                </div>
+              </div>
             </div>
+
+            <div class="form-floating mb-3">
+              <%= f.label :email, "メールアドレス", for: "floatingEmail" %>
+              <%= f.email_field :email, class: "form-control", id: "floatingEmail", placeholder: "name@example.com", autocomplete: "email" %>
+            </div>
+
+            <%= f.submit "変更を保存", class: "btn btn-secondary w-100 my-3" %>
+          <% end %>
+
+          <div class="text-center">
+            <%= link_to "ユーザーを削除", user_path(@user.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger w-100" %>
           </div>
+
         </div>
-
-        <div class="form-floating mb-3">
-          <%= f.label :email, "メールアドレス", for: "floatingEmail" %>
-          <%= f.email_field :email, class: "form-control", id: "floatingEmail", placeholder: "name@example.com", autocomplete: "email" %>
-        </div>
-
-        <%= f.submit "変更を保存", class: "btn btn-secondary w-100 my-3" %>
-
-      <% end %>
-
-      <div class="text-center">
-        <%= link_to "ユーザーを削除", user_path(@user.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger w-100" %>
       </div>
     </div>
   </div>

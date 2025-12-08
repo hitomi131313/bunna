@@ -1,24 +1,51 @@
-<div class="container" style="background-color: #e2d4cb;">
+<style>
+@media (min-width: 992px) {
+  .min-vh-lg-100 {
+    min-height: 100vh;
+  }
+}
+</style>
+
+<div class="container min-vh-100" style="background-color: #e2d4cb;">
   <div class='row'>
-    <div class='col-3 p-3' style="background-color: #eee6e2;" >
+    <div class='col-lg-3 min-vh-lg-100 p-3' style="background-color: #eee6e2;" >
       <div class="card shadow-sm rounded-3" style="background-color: #d0b9af; color:#715412;">
         <div class="card-body">
-          <h5 class="card-title mb-3 fw-bold">検索条件</h5>
+          <h5 class="card-title mb-3 fw-bold">投稿検索</h5>
           <%= render 'posts/search', url: user_path %>
         </div>
       </div>
     </div>
 
-    <div class='col-9'>
-      <div class='d-flex justify-content-between align-items-center px-3 py-2 my-3 text-white fw-bold' style="background-color: #b28c7b;">
-        <div>
-          <h3><%= @user.name %></h3>
+    <div class='col-lg-9'>
+    <div class='row px-3 py-2 my-3 text-white fw-bold' style="background-color: #b28c7b;">
+        <div class="col-md-12">
+          <div class="d-flex justify-content-between align-items-center justify-content-center justify-content-md-between">
+            <h3><%= @user.name %></h3>
+
+            <div class="d-flex flex-wrap ms-auto gap-2">
+              <div class="d-flex flex-wrap gap-2">
+                <%= link_to "#{@user.followings.count}フォロー",  user_followings_path(@user), class: "text-white ml-3" %>
+                <%= link_to "#{@user.followers.count}フォロワー", user_followers_path(@user), class: "text-white ml-3" %>
+              </div>
+              <% if current_user != @user %>
+                <% if current_user.following?(@user) %>
+                  <%= button_to "フォロー解除", user_relationships_path(@user), method: :delete, class: "ml-3" %>
+                <% else %>
+                  <%= button_to "フォローする", user_relationships_path(@user), method: :post, class: "ml-3" %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class='my-4'>
+
+      <% if @posts.any? %>
         <%= render 'posts/index', posts: @posts %>
-      </div>
+      <% else %>
+        <p class='px-3'>投稿は見つかりませんでした</p>
+      <% end %>
     </div>
   </div>
 </div>
