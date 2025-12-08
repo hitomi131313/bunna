@@ -23,8 +23,8 @@
 
 ​
 ## 設計書
-テーブル定義書　https://docs.google.com/spreadsheets/d/1q4B6_h_w4Sy3ZaWNKpYwPNP8-aJHfzVrtubqFP09xRQ/edit?usp=sharing
-ER図　　　　　　https://drive.google.com/file/d/1vmyrYia9fdoQ9ImYdZtUdJzIG1VsUrc4/view?usp=sharing
+テーブル定義書　https://docs.google.com/spreadsheets/d/1q4B6_h_w4Sy3ZaWNKpYwPNP8-aJHfzVrtubqFP09xRQ/edit?usp=sharing<br>
+ER図　　　　　　https://drive.google.com/file/d/1vmyrYia9fdoQ9ImYdZtUdJzIG1VsUrc4/view?usp=sharing<br>
 詳細設計　　　　https://docs.google.com/spreadsheets/d/1H_2Zw-EeG0p0kCblumFp8XSgdqf9oKuL_X2_xqQqQF4/edit?usp=sharing
 
 ​
