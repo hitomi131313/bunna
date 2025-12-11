@@ -12,23 +12,23 @@
 
     <div class="form-group">
       <%= f.label :selected_kind, "種類選択" %> <br>
-      <%= f.collection_select :selected_kind, Post.kinds.keys, :to_s, ->(k){t("enums.post.kind.#{k}")}, {selected: params[:selected_kind], include_blank: "選択してください"},{ class: "form-select w-100" } %>
+      <%= f.collection_select :selected_kind, Post.kinds.keys, :to_s, ->(k){t("enums.post.kind.#{k}")}, {selected: params[:selected_kind], include_blank: "選択してください"},{ class: "form-select w-100 rounded" } %>
     </div>
 
     <div class="form-group">
       <%= f.label :selected_origin_country, "産地国選択" %> <br>
-      <%= f.collection_select :selected_origin_country, Post.origin_countries.keys, :to_s, ->(k){t("enums.post.origin_country.#{k}")}, {selected: params[:selected_origin_country],include_blank: "選択してください"},{ class: "form-select w-100" } %>
+      <%= f.collection_select :selected_origin_country, Post.origin_countries.keys, :to_s, ->(k){t("enums.post.origin_country.#{k}")}, {selected: params[:selected_origin_country],include_blank: "選択してください"},{ class: "form-select w-100 rounded" } %>
     </div>
 
     <div class="form-group">
       <%= f.label :selected_place, "場所選択" %> <br>
-      <%= f.collection_select :selected_place, Post.places.keys, :to_s, ->(k){t("enums.post.place.#{k}")}, {selected: params[:selected_place], include_blank: "選択してください"},{ class: "form-select w-100" } %>
+      <%= f.collection_select :selected_place, Post.places.keys, :to_s, ->(k){t("enums.post.place.#{k}")}, {selected: params[:selected_place], include_blank: "選択してください"},{ class: "form-select w-100 rounded" } %>
     </div>
 
     <div class="form-group">
       <%= f.label :post_keyword, "キーワード検索" %> <br>
-      <%= f.text_field :post_keyword, placeholder: "titleを検索", value: params[:post_keyword], class: "form-select w-100" %>
-      <%= f.select :post_method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial"}, params[:post_method]), { include_blank: "選択してください"},{ include_hidden: false, class: "form-select w-100" }%>
+      <%= f.text_field :post_keyword, placeholder: "titleを検索", value: params[:post_keyword], class: "form-select w-100 rounded mb-1" %>
+      <%= f.select :post_method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial"}, params[:post_method]), { include_blank: "選択してください"},{ include_hidden: false, class: "form-select w-100 rounded" }%>
     </div>
 
     <%= f.submit "検索" %>
