@@ -30,9 +30,9 @@
               </div>
               <% if current_user != @user %>
                 <% if current_user.following?(@user) %>
-                  <%= button_to "フォロー解除", user_relationships_path(@user), method: :delete, class: "ml-3" %>
+                  <%= button_to "フォロー解除", user_relationships_path(@user), method: :delete, class: "rounded ml-3" %>
                 <% else %>
-                  <%= button_to "フォローする", user_relationships_path(@user), method: :post, class: "ml-3" %>
+                  <%= button_to "フォローする", user_relationships_path(@user), method: :post, class: "rounded ml-3" %>
                 <% end %>
               <% end %>
             </div>
