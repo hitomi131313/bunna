@@ -15,7 +15,7 @@ class Post < ApplicationRecord
   
   def get_image
     unless image.attached?
-      file_path = Rails.root.join('app/asserts/images/no_image.jpg')
+      file_path = Rails.root.join('app/assets/images/no_image.jpg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpg')
     end
     image
@@ -23,7 +23,7 @@ class Post < ApplicationRecord
 
   def get_square_image
     unless image.attached?
-      file_path = Rails.root.join('app/asserts/images/no_image.jpg')
+      file_path = Rails.root.join('app/assets/images/no_image.jpg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpg')
     end
     image.variant(gravity: :center, resize:"400x400^", crop:"400x400+0+0")
