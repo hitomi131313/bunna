@@ -10,7 +10,11 @@ class User < ApplicationRecord
   validates :last_name_kana,  presence: true
   validates :first_name_kana, presence: true
   
+  validate :profile_image_content_type
+
   has_one_attached :profile_image
+
+
 
 
   has_many :posts,          dependent: :destroy
@@ -54,6 +58,14 @@ class User < ApplicationRecord
   scope :latest, -> {order(created_at: :desc)}
   scope :old,    -> {order(created_at: :asc)}
 
+
+  def profile_image_content_type
+    return unless profile_image.attached?
+
+    unless profile_image.content_type.in?(%w(image/jpeg))
+      errors.add(:profile_image, 'はJPEG形式のみアップロード可能です')
+    end
+  end
 
   def self.user_search_for(user_keyword, user_method)
     if user_method == "perfect"
