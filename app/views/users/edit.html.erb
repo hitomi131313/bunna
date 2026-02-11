@@ -7,12 +7,14 @@
           <h2 class="text-center mb-4">プロフィール編集</h2>
 
           <% if @user.errors.any? %>
-            <%= @user.errors.count %>件のエラーが発生しました
-            <ul>
-              <% @user.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
+            <div class="alert alert-danger">
+              <%= @user.errors.count %>件のエラーが発生しました
+              <ul>
+                <% @user.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
           <% end %>
 
           <%= form_with model:@user, local: true do |f| %>
