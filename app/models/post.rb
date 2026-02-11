@@ -13,15 +13,15 @@ class Post < ApplicationRecord
   validates :origin_country,  presence: true
   validates :place,           presence: true
   
-  validate :image_content_type
+  # validate :image_content_type
   
-  def image_content_type
-    return unless image.attached?
+  # def image_content_type
+  #   return unless image.attached?
 
-    unless image.content_type.in?(%w(image/jpeg))
-      errors.add(:image, 'はJPEG形式のみアップロード可能です')
-    end
-  end
+  #   unless image.content_type.in?(%w(image/jpeg))
+  #     errors.add(:image, 'はJPEG形式のみアップロード可能です')
+  #   end
+  # end
 
   def get_image
     unless image.attached?
