@@ -62,8 +62,8 @@ class User < ApplicationRecord
   def profile_image_content_type
     return unless profile_image.attached?
 
-    unless profile_image.content_type.in?(%w(image/jpeg image/png image/webp))
-      errors.add(:profile_image, 'はJPEG・PNG・WEBP形式のみアップロード可能です')
+    unless profile_image.content_type.in?(%w(image/jpeg image/png))
+      errors.add(:profile_image, 'はJPEG・PNG形式のみアップロード可能です')
     end
   end
 
