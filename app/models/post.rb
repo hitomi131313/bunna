@@ -18,8 +18,8 @@ class Post < ApplicationRecord
   def image_content_type
     return unless image.attached?
 
-    unless image.content_type.in?(%w(image/jpeg image/png))
-      errors.add(:image, 'はJPEG形式のみアップロード可能です')
+    unless image.content_type.in?(%w(image/jpeg image/png image/webp))
+      errors.add(:image, 'はJPEG,PNG,WEBP形式のみアップロード可能です')
     end
   end
 
